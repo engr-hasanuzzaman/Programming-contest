@@ -1,7 +1,7 @@
 # @param {Integer[][]} board
 # @return {Void} Do not return anything, modify board in-place instead.
 def game_of_life(board)
-    return board unless board.size == 0
+    return board if board.size == 0
     
     result = Array.new(board.size){Array.new(board[0].size)}
     
@@ -11,13 +11,16 @@ def game_of_life(board)
         end
     end
     
-    puts "after update result is #{result.inspect}"
-    board = result
+    board.size.times do |i|
+        board[i].size.times do |j|
+             board[i][j] = result[i][j]
+        end
+    end
 end
 
 # return numer of live adjacent cell 
 def live_adjacent(board, i, j)
-    lef, right = board[i][j - 1], board[i][j + 1]
+    
     # in ruby we can access element using negetive index 
     # if i = 0 then i -1 become -1 that means last element
     max_height = board.size
@@ -25,21 +28,17 @@ def live_adjacent(board, i, j)
     max_width = board[0].size
     min_width = 0
     
+    # if index get out of input boundary consider that value as 0
+    lef = (j - 1 >= min_width) ? board[i][j - 1] : 0
+    right = (j + 1 < max_width) ? board[i][j + 1] : 0
     top = (i - 1 >= min_height) ? board[i - 1][j] : 0
     bottom = (i + 1 < max_height) ? board[i + 1][j] : 0
     left_top = (i - 1 >= min_height && j - 1 >= min_width) ? board[i - 1][j - 1] : 0
     left_bottom = (i + 1 < max_height && j - 1 >= min_width) ? board[i + 1][j - 1] : 0 
     right_top = (i - 1 >= min_height && j + 1 < max_width) ? board[i - 1][j + 1] : 0
-    right_bottom = (i + 1 < max_height && j + 1 < hax_width) ? board[i + 1][j + 1] : 0
-    puts "---------------------------- "
-    puts "board is #{board}"
-    puts "for i = #{i} and j = #{j}"
-    puts "lef, right = #{lef}, #{right}"
-    puts "top, bottom = #{top}, #{bottom}"
-    puts "left_top, left_bottom = #{left_top}, #{left_bottom}"
-    puts "right_top, right_bottom = #{right_top}, #{right_bottom}"
-    puts "------------------------------------------------"
-    # remove nil (outside of m*n array)/considering them dead
+    right_bottom = (i + 1 < max_height && j + 1 < max_width) ? board[i + 1][j + 1] : 0
+    
+    # make array with neighbouring cell, remobe nil and return total
     [
        lef, right ,
        top, bottom,

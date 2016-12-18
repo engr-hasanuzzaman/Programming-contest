@@ -1,0 +1,66 @@
+# @param {Integer[][]} board
+# @return {Void} Do not return anything, modify board in-place instead.
+def game_of_life(board)
+    return board unless board.size == 0
+    
+    result = Array.new(board.size){Array.new(board[0].size)}
+    
+    board.size.times do |i|
+        board[i].size.times do |j|
+            result[i][j] = next_state(board[i][j], live_adjacent(board, i, j))
+        end
+    end
+    
+    puts "after update result is #{result.inspect}"
+    board = result
+end
+
+# return numer of live adjacent cell 
+def live_adjacent(board, i, j)
+    lef, right = board[i][j - 1], board[i][j + 1]
+    # in ruby we can access element using negetive index 
+    # if i = 0 then i -1 become -1 that means last element
+    max_height = board.size
+    min_height = 0
+    max_width = board[0].size
+    min_width = 0
+    
+    top = (i - 1 >= min_height) ? board[i - 1][j] : 0
+    bottom = (i + 1 < max_height) ? board[i + 1][j] : 0
+    left_top = (i - 1 >= min_height && j - 1 >= min_width) ? board[i - 1][j - 1] : 0
+    left_bottom = (i + 1 < max_height && j - 1 >= min_width) ? board[i + 1][j - 1] : 0 
+    right_top = (i - 1 >= min_height && j + 1 < max_width) ? board[i - 1][j + 1] : 0
+    right_bottom = (i + 1 < max_height && j + 1 < hax_width) ? board[i + 1][j + 1] : 0
+    puts "---------------------------- "
+    puts "board is #{board}"
+    puts "for i = #{i} and j = #{j}"
+    puts "lef, right = #{lef}, #{right}"
+    puts "top, bottom = #{top}, #{bottom}"
+    puts "left_top, left_bottom = #{left_top}, #{left_bottom}"
+    puts "right_top, right_bottom = #{right_top}, #{right_bottom}"
+    puts "------------------------------------------------"
+    # remove nil (outside of m*n array)/considering them dead
+    [
+       lef, right ,
+       top, bottom,
+       left_top, left_bottom,
+       right_top, right_bottom
+    ].compact.reduce(:+)
+end
+
+def next_state(current_state, live_neighbour)
+    if current_state == 1
+        # Any live cell with fewer than two live neighbors dies
+        # Any live cell with more than three live neighbors dies
+        if live_neighbour < 2 || live_neighbour > 3
+            return 0
+        end     
+    else
+        # Any dead cell with exactly three live neighbors becomes a live cell
+        if live_neighbour == 3
+            return 1
+        end
+    end
+    
+    return current_state
+end

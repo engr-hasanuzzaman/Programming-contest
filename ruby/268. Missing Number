@@ -1,0 +1,11 @@
+# @param {Integer[]} nums
+# @return {Integer}
+def missing_number(nums)
+    # construct hash taking num as key with count as their value
+    missing_hash = nums.each_with_object(Hash.new(0)){ |n, h| h[n] += 1 }
+    
+    # which key's value is still 0 that is our expected value
+    (nums.size + 1).times do |num|
+       return num if missing_hash[num] == 0
+    end
+end

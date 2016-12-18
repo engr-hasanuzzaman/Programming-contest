@@ -1,0 +1,9 @@
+# @param {Integer[]} nums
+# @return {Integer}
+def third_max(nums)
+    nums = nums.uniq.sort{|x, y| y <=> x }
+    
+    # if index 2 value in nil then return first one
+    # since we sort our array in decending order
+    return nums.fetch(2, nums[0])
+end

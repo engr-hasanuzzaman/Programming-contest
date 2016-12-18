@@ -1,0 +1,19 @@
+# @param {Integer[][]} matrix
+# @return {Void} Do not return anything, modify matrix in-place instead.
+def set_zeroes(matrix)
+    result = Array.new(matrix.size){ Array.new(matrix[0].size, 0) }
+    
+    # markig result
+    matrix.size.times do |i|
+        matrix[i].size.times do |j|
+            result[i][j] = matrix[i][j] unless matrix[i].include?(0) || matrix.map{|row| row[j]}.include?(0)
+        end
+    end
+    
+    # replace matrix with result
+    matrix.size.times do |i|
+        matrix[i].size.times do |j|
+             matrix[i][j] = result[i][j]
+        end
+    end
+end

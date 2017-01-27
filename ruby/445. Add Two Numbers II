@@ -1,0 +1,68 @@
+# Definition for singly-linked list.
+# class ListNode
+#     attr_accessor :val, :next
+#     def initialize(val)
+#         @val = val
+#         @next = nil
+#     end
+# end
+
+# @param {ListNode} l1
+# @param {ListNode} l2
+# @return {ListNode}
+def add_two_numbers(l1, l2)
+    num1, num2, t_l1, t_l2 = [], [], l1, l2
+    
+    while t_l1 || t_l2
+        if t_l1
+            num1 << t_l1.val
+            t_l1 = t_l1.next
+        end 
+        
+        if t_l2
+            num2 << t_l2.val
+            t_l2 = t_l2.next
+        end  
+    end
+    # puts "------------------ num1 #{num1} and num2 #{num2}"
+    return nil if num1.size < 1 && num2.size < 1
+    
+    sum = (num1.pop || 0) + (num2.pop || 0)
+    
+    remainder = 0
+    
+    if sum > 9
+        sum %= 10
+        remainder = 1
+    end
+    
+    
+    result = ListNode.new(sum)
+    
+    result
+    
+    while num1.size > 0 || num2.size > 0
+        a, b = (num1.pop || 0), (num2.pop || 0)
+        sum = a + b + remainder
+        
+        if sum > 9
+          sum %= 10
+          remainder = 1
+        else
+          remainder = 0
+        end
+        
+        temp = ListNode.new(sum)
+        temp.next = result
+        result = temp
+    end
+    
+    
+    if remainder != 0
+      temp = ListNode.new(remainder)
+      temp.next = result
+      result = temp
+    end
+    
+    return result
+end

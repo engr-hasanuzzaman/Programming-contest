@@ -1,1 +1,3 @@
-# In this repositiory I will keep all my leetcode problem's solutions
+# Programming contest.
+
+This is my personal repository of solutions that I wrote through the time. 

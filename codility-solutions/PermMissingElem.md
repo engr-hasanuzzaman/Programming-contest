@@ -23,3 +23,15 @@ Write an efficient algorithm for the following assumptions:
 N is an integer within the range [0..100,000];
 the elements of A are all distinct;
 each element of array A is an integer within the range [1..(N + 1)].
+
+```ruby
+def solution(a)
+  # write your code in Ruby 2.2
+  size_of_a = a.size
+  return 1 if size_of_a.zero?
+  
+  sum_of_array = a.inject(&:+)
+  expected_sum = ((size_of_a + 1) *(size_of_a + 2)) / 2
+  expected_sum - sum_of_array
+end
+```

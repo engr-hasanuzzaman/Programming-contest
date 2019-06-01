@@ -19,6 +19,6 @@ def search(nums, target)
           right = mid - 1
       end
   end
-
+  
   -1
 end

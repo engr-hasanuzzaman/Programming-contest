@@ -1,12 +1,3 @@
-=begin
-  
-6 3
-1 3 9 9 27 81
-
-output: 6
-  
-=end
-
 #!/bin/ruby
 
 require 'json'
@@ -14,6 +5,7 @@ require 'stringio'
 
 # Complete the countTriplets function below.
 def countTriplets(arr, r)
+  return cal_for_r1(arr) if r == 1
   arr_length = arr.size
   arr_dict = {}
   num_of_consecutive = 0
@@ -43,6 +35,27 @@ def countTriplets(arr, r)
   end
 
   num_of_consecutive
+end
+
+def cal_for_r1(arr)
+    num_of_consecutive = 0
+    arr_dict = Hash.new(0)
+    arr.each do |e|
+        arr_dict[e] += 1
+    end
+    
+    arr_dict.values.each do |v|
+      p v
+      num_of_consecutive += fac(v) / (fac(3) * fac(v-3))
+    end
+
+    num_of_consecutive
+end
+
+def fac(n)
+ return 1 if n.zero?
+
+ n.downto(1).reduce(:*)
 end
 
 fptr = File.open(ENV['OUTPUT_PATH'], 'w')

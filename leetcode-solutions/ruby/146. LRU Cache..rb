@@ -57,7 +57,6 @@ class LRUCache
 end
 
 # dlink list implementaion 
-
 class Node
     attr_accessor :next, :prev, :val, :key
     
@@ -77,16 +76,14 @@ class DLink
         @length = 0
     end
     
-    def add(val)
-        node = Node.new(val)
-        
+    def add(node)
         # head do not exist
         if !@head
             @head = node
             @tail = node
         else
             @tail.next = node
-            @tail.next.previous = @tail
+            @tail.next.prev = @tail
             @tail = @tail.next
         end
        
@@ -97,7 +94,7 @@ class DLink
     def remove
         head = @head
         
-        @head.next.previous = nil
+        @head.next.prev = nil
         @head = @head.next
         
         # return head node
@@ -109,15 +106,26 @@ class DLink
         
         if node == @head
             @head = @head.next
-            @nead.previous = nil
+            @head.prev = nil
         else
-            node.previous.next = node.next
-            node.next.previous = node.previous
+            node.prev.next = node.next
+            node.next.prev = node.prev
         end
         
         @tail.next = node
-        node.previous = @tail
+        node.prev = @tail
         @tail = node
+    end
+
+    def to_list
+        list = []
+        node = @head
+        while node
+            list << node.val
+            node = node.next
+        end
+
+        list
     end
 end
 
@@ -125,3 +133,14 @@ end
 # obj = LRUCache.new(capacity)
 # param_1 = obj.get(key)
 # obj.put(key, value) 
+
+dl = DLink.new()
+n = Node.new(1 , 2)
+dl.add(n)
+dl.add(Node.new(2, 'k'))
+dl.add(Node.new(3, 'k'))
+puts "after put 1,2,3 DLink #{dl.to_list}"
+dl.move_to_tail(n)
+puts "after move to tail #{dl.to_list}"
+dl.remove
+puts "after remove #{dl.remove}"

@@ -16,4 +16,20 @@ def max_subarray(arr)
   sum
 end
 
-puts max_subarray([-1,2,4,-3,5,2,-5,2])
+# complexity O(n)
+def max_subarray_n(arr)
+  p = 0
+  s = 0
+  k = 0
+
+  while k < arr.size - 1
+    s = arr[k] > s + arr[k] ? arr[k] : arr[k] + s
+    p = [p, s].max
+    k += 1
+  end
+  
+  p
+end
+
+# puts max_subarray([-1,2,4,-3,5,2,-5,2])
+puts max_subarray_n([-1,2,4,-3,5,2,-5,2])

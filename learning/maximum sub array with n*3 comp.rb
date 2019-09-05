@@ -31,5 +31,5 @@ def max_subarray_n(arr)
   p
 end
 
-# puts max_subarray([-1,2,4,-3,5,2,-5,2])
+puts max_subarray([-1,2,4,-3,5,2,-5,2])
 puts max_subarray_n([-1,2,4,-3,5,2,-5,2])

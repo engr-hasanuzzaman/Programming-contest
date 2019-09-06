@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/lru-cache/
-
+require 'pry'
 class LRUCache
   # attr_accessor 
 =begin
@@ -60,7 +60,7 @@ end
 class Node
     attr_accessor :next, :prev, :val, :key
     
-    def initialize(val, key)
+    def initialize(key, val)
         self.next = nil
         self.prev = nil
         self.val = val
@@ -92,6 +92,12 @@ class DLink
     
     # always remove from head as that is least used     
     def remove
+        if @head == @tail
+            head = @head
+            @head = nil
+            return head
+        end
+
         head = @head
         
         @head.next.prev = nil
@@ -102,9 +108,10 @@ class DLink
     end
     
     def move_to_tail(node)
-        return if node == @tail
-        
-        if node == @head
+        return if node.key == @tail.key
+        n_node = Node.new(node.key, node.val)
+        # p "move to tail #{node.key} #{@tail.key}"
+        if node.key == @head.key
             @head = @head.next
             @head.prev = nil
         else
@@ -112,9 +119,7 @@ class DLink
             node.next.prev = node.prev
         end
         
-        @tail.next = node
-        node.prev = @tail
-        @tail = node
+        add(n_node)
     end
 
     def to_list
@@ -135,12 +140,18 @@ end
 # obj.put(key, value) 
 
 dl = DLink.new()
-n = Node.new(1 , 2)
+n = Node.new(1, 'v1')
+n2 = Node.new(2, 'v2')
+n3 = Node.new(3, 'v3')
+n4 = Node.new(4, 'v4')
+
 dl.add(n)
-dl.add(Node.new(2, 'k'))
-dl.add(Node.new(3, 'k'))
+dl.add(n2)
+dl.add(n3)
 puts "after put 1,2,3 DLink #{dl.to_list}"
 dl.move_to_tail(n)
 puts "after move to tail #{dl.to_list}"
-dl.remove
-puts "after remove #{dl.remove}"
+puts "remove #{dl.remove.val}"
+puts "after move to tail #{dl.to_list}"
+dl.add(n4)
+puts "after move to tail #{dl.to_list}"

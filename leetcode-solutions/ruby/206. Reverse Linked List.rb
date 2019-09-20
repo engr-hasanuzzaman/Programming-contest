@@ -55,3 +55,13 @@ def reverse_list(head)
     
     last_node
 end
+
+# recursive solution
+def reverse_list(head)
+    return head unless head && head.next
+    # this will always contain new head
+    nn = reverse_list(head.next)
+    head.next.next = head
+    head.next = nil
+    nn
+end

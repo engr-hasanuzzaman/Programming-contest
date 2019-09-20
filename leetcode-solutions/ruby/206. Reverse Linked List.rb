@@ -41,3 +41,17 @@ def reverse_list(head)
     
     return head
 end
+
+# updated solution 
+def reverse_list(head)
+    last_node = nil
+    node = head
+    while node
+        nn = node.next
+        node.next = last_node
+        last_node = node
+        node = nn
+    end
+    
+    last_node
+end

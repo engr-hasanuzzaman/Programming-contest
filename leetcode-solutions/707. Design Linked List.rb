@@ -2,10 +2,11 @@
 
 # Node
 class Node
-  @attr_accessor :next, :val
+  attr_accessor :next, :val
   
   def initialize(val)
-      self.val = val
+      @val = val
+      @next = nil
   end
 end
 
@@ -28,16 +29,13 @@ class MyLinkedList
   :rtype: Integer
 =end
   def get(index)
-      return -1 if index >= @size || index < 0
-      return @tail.val if index == @size -1
-      return @head.val if index == 0
+      node = n_th_node(index)
       
-      node = @head
-      while index > 0
-          node = node.next
+      if node
+          node.val
+      else
+          -1
       end
-      
-      node.val
   end
 
 
@@ -55,6 +53,8 @@ class MyLinkedList
           @head = Node.new(val)
           @tail = @head
       end
+      
+      @size += 1
   end
 
 
@@ -70,8 +70,9 @@ class MyLinkedList
           @tail = n_tail
       else
           @tail = Node.new(val)
-          @head  @tail
+          @head = @tail
       end
+      @size += 1
   end
 
 
@@ -81,8 +82,16 @@ class MyLinkedList
   :type val: Integer
   :rtype: Void
 =end
-  def add_at_index(index, val)
+  def add_at_index(index, val)   
+     return add_at_head(val) if index == 0
+     return add_at_tail(val) if index == @size - 1
+          
+      p_node = n_th_node(index-1) # take nth node
+      n_node = p_node.next
       
+      new_node = Note.new(val)
+      new_node.next = n_node
+      p_node.next = new_node
   end
 
 
@@ -92,10 +101,48 @@ class MyLinkedList
   :rtype: Void
 =end
   def delete_at_index(index)
+      # handle head & tail        
+      if index == 0
+          return remove_head
+      end
       
+      if index == @size - 1
+          return remove_tail
+      end
+      
+      # handle other
+      p_node = n_th_node(index-1) # take nth node
+      n_node = n_th_node(index+1) # take nth node
+      p_node.next = n_node
+      
+      @size -= 1
+  end
+  
+  def n_th_node(index)
+      return nil if index >= @size || index < 0
+      return @tail if index == @size - 1
+      return @head if index == 0
+      
+      node = @head
+      while index > 0
+          node = node.next
+          index -= 1
+      end
   end
 
-
+  def remove_head
+      return unless @head
+      @head = @head.next
+      @size -= 1
+  end
+  
+  def remove_tail
+      return unless @tail
+      
+      p_node = n_th_node(index-1) # take nth node
+      @tail = p_node
+      @size -= 1
+  end
 end
   
 

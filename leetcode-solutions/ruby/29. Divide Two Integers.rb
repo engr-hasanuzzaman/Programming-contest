@@ -31,3 +31,22 @@ def divide(dividend, divisor)
 end
 
 # faser approch: using bit manipulation
+# @param {Integer} dividend
+# @param {Integer} divisor
+# @return {Integer}
+def divide(dividend, divisor)
+  sign = (dividend < 0) ^ (divisor < 0) ? -1 : 1
+  dividend = dividend.abs
+  divisor = divisor.abs
+  temp = 0
+  quotient = 0
+  # 32 bit interger so, 0..31 2^
+  31.downto(0) do |i|
+      if (temp + (divisor << i)) <= dividend
+          temp += (divisor << i)
+          quotient |= 1 << i
+      end
+  end 
+  
+  (sign * quotient) > 2147483647 ? 2147483647 : (sign * quotient)
+end

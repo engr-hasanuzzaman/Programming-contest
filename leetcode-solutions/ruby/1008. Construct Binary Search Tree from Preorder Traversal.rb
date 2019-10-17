@@ -1,5 +1,3 @@
-# https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
-
 # Definition for a binary tree node.
 # class TreeNode
 #     attr_accessor :val, :left, :right
@@ -17,16 +15,14 @@ def bst_from_preorder(preorder)
   
   1.upto(preorder.size-1) do |i|
       temp = TreeNode.new(preorder[i])
-      # puts "-temp #{temp.val}"
+      
       if stack[-1].val > temp.val
           stack[-1].left = temp
       else
-          prev = nil
-          
           while stack.size > 0 && stack[-1]&.val.to_i < temp.val
               prev = stack.pop
           end
-         # puts "-- prev is #{prev.val}, tv #{temp.val}"
+         
           prev.right = temp
       end
       

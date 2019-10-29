@@ -15,5 +15,5 @@ def last_stone_weight(stones)
       end
   end
   
-  stones.first
+  stones.first.to_i
 end

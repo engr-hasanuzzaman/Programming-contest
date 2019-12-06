@@ -9,13 +9,13 @@ def convert(s, num_rows)
   dir = true # increment
   answer = [[]]
   max_i = num_rows - 1
+  return s if num_rows == 1 || s.size <= num_rows
   
   s.size.times do |i|
-      # c_n = i % max_i
       unless answer[r_i]
           answer[r_i] = []
       end
-      print "#{r_i}#{c_i} "
+      
       answer[r_i][c_i] = s[i]
       
       if dir && r_i == max_i
@@ -31,12 +31,8 @@ def convert(s, num_rows)
       else
           r_i += 1
       end
-          
-          
-      # answer[r_i] << s[i]
       
   end
+  
   answer.flatten.compact.join("")
 end
-
-# index out of index for num 1

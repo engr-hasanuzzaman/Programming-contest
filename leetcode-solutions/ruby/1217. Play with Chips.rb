@@ -17,3 +17,5 @@ def min_cost_to_move_chips(chips)
   end
   counter
 end
+
+# fail test input [1,234,567,7,89,12,345,134,12,34,5]

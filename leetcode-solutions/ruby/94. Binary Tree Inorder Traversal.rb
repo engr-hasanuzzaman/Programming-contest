@@ -28,3 +28,27 @@ def dfs(root, result)
 end
 
 # iterative solution
+def inorder_traversal(root)
+  result = []
+  dfs(root)
+end
+
+def dfs(root)
+  return [] if root.nil?
+  result = []
+  stack = []
+  node = root
+  
+  while !stack.empty? || node
+      while node
+          stack << node
+          node = node.left
+      end
+      
+      node = stack.pop
+      result << node.val
+      node = node.right
+  end
+  
+  result
+end

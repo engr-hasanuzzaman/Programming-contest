@@ -28,3 +28,22 @@ def two_sum(numbers, target)
     
     return []
 end
+
+
+# tow pointer solution
+# @param {Integer[]} numbers
+# @param {Integer} target
+# @return {Integer[]}
+def two_sum(numbers, target)
+    i, j = 0, numbers.size-1
+    
+    while i < j
+        sum = numbers[i] + numbers[j]
+        return [i+1, j+1] if  sum == target
+        if sum > target
+            j -= 1
+        else
+            i += 1
+        end
+    end
+end

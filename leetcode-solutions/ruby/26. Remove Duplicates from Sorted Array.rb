@@ -1,40 +1,24 @@
 # https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 
-# limelimit exceed code
 # @param {Integer[]} nums
 # @return {Integer}
 def remove_duplicates(nums)
-  size = 0
-  prev_num = nums.first
-  left = 0
-  count = 0
-  arr_length = nums.size
+  return 0 if nums.size.zero?
   
-  while(count < nums.size)
-      current = nums[left]
-      end_i = left
-      
-      # find duplicate 
-      while end_i < arr_length - 1 && nums[end_i+1] == current
-          end_i += 1
+  # left last placement value
+  left = 0
+  right = 1
+  
+  while right < nums.size
+      # check current value with last placement value
+      if nums[right] != nums[left]
+          # place next to last placement
+          left += 1
+          nums[left] = nums[right]
       end
       
-      # duplicate found         
-      if end_i - left > 0
-          dup_size = end_i - left
-          start = left+1
-          
-          while start < arr_length
-              nums[start] = nums[start+dup_size]
-              start += 1
-          end
-          
-          arr_length -= dup_size
-      end
-      
-      count = count + end_i - left + 1
-      left += 1
+      right += 1
   end
   
-  arr_length
+  left  + 1
 end

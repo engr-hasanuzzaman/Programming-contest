@@ -29,3 +29,34 @@ def rotate(nums, k)
       nums[i] = temp_a[i]
   end
 end
+
+# Using Cyclic Replacements Algorithm
+# rotate by k means every value will be shift by k 
+# if current index is i then new index for ith value will be (k+i) % n where 
+# n is num of element in array
+# k rotate factor
+def rotate(nums, k)
+  # handle empty array     
+  return nums if nums.size.zero?
+  
+  k = k % nums.size
+  return nums if k.zero?
+  count = 0 # indicate num of value rotated
+  start = 0
+  
+  while count < nums.size
+      current = start
+      previous = nums[start]
+      # replace (current+k)th interval value to correct postion
+      loop do
+          current = (k+current) % nums.size
+          temp = nums[current]
+          nums[current] = previous
+          previous = temp
+          count += 1 # keep tracking how many num has been replaced
+          break if current == start # replaced all the values of this cycle
+      end
+      
+      start += 1 
+  end
+end

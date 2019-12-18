@@ -57,6 +57,11 @@ def reverse_list(head)
 end
 
 # recursive solution
+# updated recursive solution
+# we do not need to return for reversing list
+# if current node is head that means we hant to make head.next or
+# current head so, head.next.next = head will reverser node order
+# we are returning node only to return head node
 def reverse_list(head)
     return head unless head && head.next
     # this will always contain new head

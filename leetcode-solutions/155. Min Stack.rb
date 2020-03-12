@@ -128,10 +128,56 @@ class MinStack
     
     
     end
-    
-    # Your MinStack object will be instantiated and called as such:
-    # obj = MinStack.new()
-    # obj.push(x)
-    # obj.pop()
-    # param_3 = obj.top()
-    # param_4 = obj.get_min()
+
+# ============ more faster solution with linear runtime ========
+
+class MinStack
+
+=begin
+    initialize your data structure here.
+=end
+    def initialize()
+        @top = -1
+        @min_val = nil
+        @s = []
+    end
+
+
+=begin
+    :type x: Integer
+    :rtype: Void
+=end
+    def push(x)
+        if @s.empty?
+            @s << [x, x]
+        else
+            @s << [x, [x, @s.last.last].min]
+        end
+    end
+
+
+=begin
+    :rtype: Void
+=end
+    def pop()
+        @s.pop
+    end
+
+
+=begin
+    :rtype: Integer
+=end
+    def top()
+        @s.last&.first
+    end
+
+
+=begin
+    :rtype: Integer
+=end
+    def get_min()
+        @s.last&.last
+    end
+
+
+end

@@ -4,6 +4,7 @@ def merge_sort(nums)
   pivot = nums.size / 2 
   left_list = merge_sort(nums[0...pivot])
   right_list = merge_sort(nums[pivot..-1])
+  
   return merge(left_list, right_list)
 end
 
@@ -24,4 +25,47 @@ def merge(left_list, right_list)
   ret += right_list[right_cursor..-1]
   
   return ret
+end
+
+# bottom up fashion
+
+# @param {Integer[]} nums
+# @return {Integer[]}
+def sort_array(nums)
+  results = nums.map{|n| [n] }
+  
+  until results.size == 1
+      temp = []
+      results.each_slice(2) do |s|
+          if s.size == 1
+              temp << s.first
+          else
+              temp << merge(s.first, s.last)
+          end
+      end
+      
+      results = temp
+  end
+  
+  results.first
+end
+
+def merge(l1, l2)
+  i1 = 0
+  i2 = 0
+  result = []
+  
+  while i1 < l1.size && i2 < l2.size
+      if l1[i1] < l2[i2]
+          result << l1[i1]
+          i1 += 1
+      else
+          result << l2[i2]
+          i2 += 1
+      end
+  end
+  
+  result += l1[i1..-1]
+  result += l2[i2..-1] 
+  result
 end

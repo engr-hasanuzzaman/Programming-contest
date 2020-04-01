@@ -15,3 +15,22 @@ def single_number(nums)
   
   s_map.first.last
 end
+
+# with lineratime and without extra space
+=begin
+a) XOR of a number with itself is 0.
+b) XOR of a number with 0 is number itself.
+c) XOR is associative and commutative
+res = 7 ^ 3 ^ 5 ^ 4 ^ 5 ^ 3 ^ 4 => 7 ^ (3 ^ 3) ^ (4 ^ 4) ^ (5 ^ 5)  
+=end
+rescue => exception
+    
+end
+def single_number(nums)
+    res = nums.first
+    nums[1..-1].each do |n|
+        res ^= n
+    end
+    
+    res
+end

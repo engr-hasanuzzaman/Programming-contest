@@ -16,3 +16,18 @@ def max_sub_array(nums)
   
   s_a[0...-1].max
 end
+
+# farser code
+# @param {Integer[]} nums
+# @return {Integer}
+def max_sub_array(nums)
+    result = nums.last
+    cur_sum = nums.last
+    
+    (nums.size - 2).downto(0).each do |i|
+        cur_sum = [nums[i], cur_sum + nums[i]].max
+        result = cur_sum if cur_sum > result
+    end
+    
+    result
+end

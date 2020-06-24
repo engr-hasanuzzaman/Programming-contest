@@ -15,3 +15,8 @@ def rot13(secret_messages)
         end.join("")
     end
 end
+
+# soulution using str translate (tr method) that translate char by char
+def rot13(secret_messages)
+   secret_messages.map{|s| s.tr('a-zA-Z', 'n-za-mN-ZA-M')}
+end

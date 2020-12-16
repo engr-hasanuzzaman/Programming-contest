@@ -1,3 +1,11 @@
+=begin
+Alogorithm: (1 based index)
+1. j = 2 to A.size
+2. i = j - 1, key = A[j]
+3. while i >= 1 & A[i] > key
+4.      A[i+1] = A[i]
+5.  a[i+1] = key
+=end
 def insertion_sort(a)
     1.upto(a.size - 1) do |j|
         key = a[j]

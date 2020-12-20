@@ -7,7 +7,7 @@ function processData(myArray) {
     }
 
     maxVal = myArray[0];
-    for(let i = 0; i < myArray.length; i++) {
+    for (let i = 0; i < myArray.length; i++) {
         for(let j = 0; j < myArray.length - 1 - i; j++) {
             if(myArray[j] > myArray[j+1]) {
                 let tmp = myArray[j];

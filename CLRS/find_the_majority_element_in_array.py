@@ -1,5 +1,6 @@
 # find the majority elemen who frequency is > (size / 2)
 # if there is no element then return -1
+# time complexity O(n), auxilary space(n) for maintaining hash
 def majorityElement(A,N):
     dict = {}
     if N == 1:

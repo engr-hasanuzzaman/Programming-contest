@@ -14,7 +14,6 @@ def merger(arr, p, q, r):
     swap_count = 0
     left_array = arr[p:q+1]
     right_array = arr[q+1:r+1]
-    # print("{} {}".format(left_array, right_array))
     left_array.append(MAX_INPUT_SIZE)
     right_array.append(MAX_INPUT_SIZE)
     i = 0
@@ -23,24 +22,21 @@ def merger(arr, p, q, r):
         if left_array[i] > right_array[j]:
             arr[index] = right_array[j]
             j += 1
-            swap_count += 1
+            swap_count += q-p-i+1 # + 1 for making zero based to 1 based 
         else:
             arr[index] = left_array[i]
             i += 1
-            if right_array[j] == MAX_INPUT_SIZE:
-                swap_count += 1
-    print("sc {},  = {}, {}, {} ".format(swap_count, left_array, right_array, arr))
     return swap_count
 
 def merge_sort(arr, p, r):
     if p == r:
         return 0
-    
+
     q = (p+r)//2
     l_count = merge_sort(arr, p, q)
     r_count = merge_sort(arr, q+1, r)
     m_count = merger(arr, p, q, r)
     return l_count + r_count + m_count
+
 def inversionCount(a,n):
-    # Your Code Here
     return merge_sort(a, 0, n-1)

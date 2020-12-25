@@ -2,8 +2,13 @@ def max_val(arr)
     # track is there bomb on row, col
     r_size = arr.size - 1
     c_size = arr.first.size - 1
+    b_matrix = get_m_matrix(arr, r_size, c_size)
+    puts "b_matrix is #{b_matrix}"
+end
+
+def get_m_matrix(arr, r_size, c_size)
     b_matrix = Array.new(r_size+1){Array.new(c_size+1){nil}}
-    puts "i m #{b_matrix}"
+    # puts "i m #{b_matrix}"
     r_size.times do |i|
         c_size.times do |j|
             if arr[i][j] == -1
@@ -14,9 +19,8 @@ def max_val(arr)
             end
         end
     end
-    puts "b_matrix is #{b_matrix}"
+    b_matrix
 end
-
 #def mark_bomb_row_col(i, j)
 #    arr[i].
 #end

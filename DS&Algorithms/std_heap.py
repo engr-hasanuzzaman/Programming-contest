@@ -9,3 +9,12 @@ arr = []
 while len(hp) > 0:
     arr.append(heappop(hp))
 print("sorted data are", arr)
+
+# max heap
+items = [19,4, 4,13,20,2]
+hp = [i * -1 for i in items]
+heapify(hp)
+arr = []
+while len(hp) > 0:
+    arr.append(heappop(hp) * -1)
+print("desc order using max heap", arr)

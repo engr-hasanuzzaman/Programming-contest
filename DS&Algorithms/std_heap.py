@@ -3,3 +3,9 @@ from heapq import heapify, heappop, heappush
 hp = [19,4, 4,13,20,2]
 heapify(hp)
 print("after heapify", hp)
+heappush(hp, 3)
+print("after push 3", hp)
+arr = []
+while len(hp) > 0:
+    arr.append(heappop(hp))
+print("sorted data are", arr)

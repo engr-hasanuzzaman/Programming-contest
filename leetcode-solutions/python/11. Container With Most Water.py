@@ -16,7 +16,7 @@ class Solution:
         return max_val
     
 # linear solution
-# Algorith
+# Algorithm
 # 1. Start with the max width (first & last item) and calculate the area
 # 2. find the next larget element of the min val side and recalculate area and update if current one is max
 # 3. repeate the step 2 untill left & right same

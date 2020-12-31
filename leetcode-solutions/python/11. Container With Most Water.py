@@ -26,13 +26,18 @@ class Solution:
         left = 0
         right = len(height) - 1
         while left < right:
+            # calculate current possible value and update max_val in needed
             if min([height[left], height[right]]) * (right - left) > max_val:
                 max_val = min([height[left], height[right]]) * (right - left)
+            # if min value was right end, find the next element that is larget then current one
+            # as less value then current will not contribute than current one
             if height[left] > height[right]:
                 c_right = height[right]
                 right -= 1
                 while right > left and height[right] <= c_right:
                     right -= 1
+            # if min value was left end, find the next element that is larget then current one
+            # as less value then current will not contribute than current one
             else:
                 c_left = height[left]
                 left += 1

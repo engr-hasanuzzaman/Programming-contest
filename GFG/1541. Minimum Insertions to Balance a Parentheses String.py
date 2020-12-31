@@ -9,33 +9,24 @@ import math
 # it will give a wrong answer
 class Solution:
     def minInsertions(self, s: str) -> int:
-        stack = []
-        count = 0
-        for i in range(len(s)-1, -1, -1):
-            p = s[i]
-            if p == '(':
-                # print("before ", count)
-                count += self.pop_and_count(stack)
-                # print("after ", count)
+        bal = 0 
+        adjust = 0
+        for c in s:
+            if c == '(':
+                bal += 2 # bal means how many ) we need to balance
+                # if every thing went well ball should be even => for ex. ()(
+                # bal is 1 so, insert ) and increment adjustment and decrease balance
+                # to make it ())( {last extra ( will calculate finally be because we do not know yet                   #                 what will come next}
+                if bal % 2 == 1:
+                    adjust += 1
+                    bal -= 1
             else:
-                stack.append(p)
-        if stack != []:
-            if stack[0] == '(':
-                count += len(stack) * 2
-            else:
-                count += math.ceil(len(stack) / 2)
-                if len(stack) % 2 != 0:
-                    count += 1
-        return count
-                              
-    def pop_and_count(self, stack):
-        if stack == []:
-            return 2
-        if len(stack) == 1:
-            stack.pop();
-            return 1
-        else:
-            stack.pop()
-            stack.pop()
-            return 0
+                bal -= 1
+                if bal < 0:
+                    # encounder ) before ( so need to insert missing (
+                    # since ( means two bal increment balance by 2
+                    adjust += 1 
+                    bal += 2
+        return bal + adjust
+
         

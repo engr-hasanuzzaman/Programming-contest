@@ -11,3 +11,5 @@
 ## collctions.deque for pop & push on the both end with constant time O(1)
 - under the hood, deque use the doubly linked list that is optimized for push, pop from both end
 - popleft & appendleft are the operation for shift & unshitf operation
+- deque.rotate(n) will rotate clockwise n times
+- deque.rotate(-n) will rotate anti-clock wise n times

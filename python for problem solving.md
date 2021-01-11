@@ -22,3 +22,8 @@
  - do not use `l1 = l2` to copy `l2` to `l1` that copy the reference
  - 4 ways to copy a list `l2 = l1.copy()`, `l2 = list(l1)`, `l2 = l1[:1]` `l2 = [i for i in l1]`
  - uppacking the list `a, *b, c = [1,2,3,4,5,6]` then `a is 1, b is [2,3,4,5] and c is 6 `
+
+ ## tuple
+ - 3 ways to create tuple `t1 = (1,2,3)`, `t2 = 4,5,6` and `t3 = tuple([7,8,9])`. N.B: `t4 = (10,)`
+ ### diff btw list & tuple
+ - tuple is immutable but list emutable as a resutl tuple take small memory and faster operation time `timeit.timeit(stmt="[1,2,3,4,5,6,7,8,9]", number=10000000)` take time `0.5227536740003416` but `timeit.timeit(stmt="(1,2,3,4,5,6,7,8,9)", number=10000000)` take time `0.08346654900014983` that is much faster

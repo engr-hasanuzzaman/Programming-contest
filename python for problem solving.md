@@ -13,3 +13,8 @@
 - popleft & appendleft are the operation for shift & unshitf operation
 - deque.rotate(n) will rotate clockwise n times
 - deque.rotate(-n) will rotate anti-clock wise n times
+
+## list (mutable, that allowed different type of values)
+ - 2 ways to create list `l1 = []` & `l2 = list()`
+ - `len(l1)` will return list length
+ - if `l = [1,2,3]` `l[1:1] = [100]` will be `1,100,2,3`

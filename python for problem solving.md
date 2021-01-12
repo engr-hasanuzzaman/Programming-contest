@@ -43,4 +43,6 @@
 - `s1 = {1,2,3,4}` `s2=set([1,2,3])`. N.B: `ss = {}` will create empty dict, correct way to create empty set is `es = set()`
 - `set.add(elm)`, `set.remove(elm)` this will raise error if element is not in set. Safer method is `s.discard()`
 - `sc = set("hello")` will create set `{'h', 'l', 'o', 'e'}`
-- set method `clear, pop, union, intersection, s1.difference(s1) will show diff from s1 only but s1.symmetric_difference(s2) will list non-common element from both sets`
+- set method `clear, pop, union, intersection, update, s1.intersection_update(s2), s1.difference_update(s2), s1.issubset(s2) s1.issuperset(s2), s1.isdisjoint(s2)`,
+- `s1.difference(s1)` will show diff from s1 only but `s1.symmetric_difference(s2)` will list non-common element from both sets`
+- `frozenset`

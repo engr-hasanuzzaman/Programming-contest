@@ -1,5 +1,5 @@
 # important SDL for competetive programming
-
+- python follow **alllowercase** naming convention
 ## collections
 - `collections.Counter(words)` where is `words` list of strings that return dictionary containing `word` as key and the frequency as value
 - `for index, val in enumerate([2,3,4])` for accessing both index and item
@@ -46,3 +46,14 @@
 - set method `clear, pop, union, intersection, update, s1.intersection_update(s2), s1.difference_update(s2), s1.issubset(s2) s1.issuperset(s2), s1.isdisjoint(s2)`,
 - `s1.difference(s1)` will show diff from s1 only but `s1.symmetric_difference(s2)` will list non-common element from both sets`
 - `frozenset`
+
+## string (immutable datastructure)
+- N.B: since string is immutable, all the string method return new string
+- `str.upper(), str.lower(), startwith, endwith, find, count, replace, split()`
+- str formatting `"the price is {:.2f}".format(p)` after point two value. Using `f` string (from python 3.6) `f"the price is {p:.10f}"`
+
+## collections
+- important iteams from `collections` are `Counter,namedtuple, OrderedDict, defaultdict, deque`
+- `Counter(stc).most_common(1)` [] of tuple
+- `namedtuple` like `structure`
+- `defaultdict(int/list)` 

@@ -12,3 +12,20 @@ class Solution:
                 N = N % coins[i]
             i += 1
         return ans
+
+# general solution to find the min coins to make provided amount using DP
+class Solution:
+    def minCoins(self, coins, M, V):
+        # initialize number of combination with the max possible number
+        dp = [10000001] * (V+1)
+        # to make 0 we need 0 number of coin
+        dp[0] = 0
+        # for each coin, calculate min number of coin needed for 1-Amount
+        # min number of coin is min[current_number_of_coin, num_of_coin_needed for amount-coint]]
+        for coin in coins:
+            for amount in range(1, V+1):
+                if amount >= coin:
+                    dp[amount] = min(dp[amount], dp[amount-coin] + 1)
+        if dp[V] == 10000001:
+            return -1
+        return dp[V]

@@ -32,6 +32,7 @@ class Solution:
 class Solution:
     def count(self, S, m, n): 
         combination = [0] * (n+1)
+        # number of way we can make 0
         combination[0] = 1
         S.sort()
         # calculate numbe of way to make a particulat amount bottom-up manner

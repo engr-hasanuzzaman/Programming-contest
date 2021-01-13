@@ -27,4 +27,19 @@ class Solution:
             else:
                 Solution.back_tracking(coins[i+1:], target - coin, memo, current)
             current.pop()
-    
+
+# solve coin problem using DP
+class Solution:
+    def count(self, S, m, n): 
+        combination = [0] * (n+1)
+        combination[0] = 1
+        S.sort()
+        # calculate numbe of way to make a particulat amount bottom-up manner
+        # we will use smaller coin and build number way to make 1 to target amount
+        # if amount >= coin:
+        #       combination[amount] += combination[amount-coint]
+        for coin in S:
+            for amount in range(1, n+1):
+                if amount >= coin:
+                    combination[amount] += combination[amount-coin]
+        return combination[n]

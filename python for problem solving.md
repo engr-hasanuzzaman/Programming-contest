@@ -7,6 +7,8 @@
 
 ## heapq
 ### provide heap DS (min heap) with the helper function `heapify, heappush, heappop, heapreplace`
+- `heapq.nlargest(n, list)` will return heap containing n largest element
+- `heapq.nsmallest(n, list)` will return heap containing n smallest element
 
 ## collctions.deque for pop & push on the both end with constant time O(1)
 - under the hood, deque use the doubly linked list that is optimized for push, pop from both end

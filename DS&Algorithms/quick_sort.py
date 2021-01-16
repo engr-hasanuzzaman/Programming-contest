@@ -13,8 +13,32 @@ def partitioner(arr, l, r):
     arr[i], arr[r] = arr[r], arr[i]
     return i
 
-arr = [12,3,6,74,23,7,10]
+arr = [12,3,6,74,23,7,10,3,22,19]
 pivot_index = partitioner(arr, 0, len(arr)-1)
-print(arr, pivot_index)
+print("1st way", arr, pivot_index)
 
+# patitioning using hoars method where pivot is [l+r]/2
+def partitioner2(arr, l, r):
+    pivot_index = (l+r)//2
+    pivot_value = arr[pivot_index]
+    i = l
+    j = r
+    while True:
+        # on the left side find element that is larget then pivot_element
+        # that should have on the right side
+        while arr[i] < pivot_value:
+            i += 1
+        
+        # on the right side find element that is smaller then pivot_element
+        # that should have on the left side
+        while arr[j] > pivot_value:
+            j -= 1
 
+        # check wheather all element ar correct postion
+        if i >= j:
+            return j
+        # swap element from both side
+        arr[i], arr[j] = arr[j], arr[i]
+arr1 = [12,3,6,74,23,7,10,3,22,19]
+pivot_index = partitioner2(arr1, 0, len(arr1)-1)
+print("2nd way", arr1, pivot_index)

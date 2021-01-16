@@ -6,7 +6,7 @@
 # N.B: we are partitioning element depending on the partition element
 def partitioner(arr, l, r):
     pivot_element = arr[r]
-    print("pivot element is ", pivot_element)
+    # print("pivot element is ", pivot_element)
     i = l
     for j in range(l, r):
         if arr[j] <= pivot_element:
@@ -16,14 +16,13 @@ def partitioner(arr, l, r):
     return i
 
 arr = [12,3,6,74,23,7,10,3,22,19]
-pivot_index = partitioner(arr, 0, len(arr)-1)
-print("1st way", arr, pivot_index)
+# pivot_index = partitioner(arr, 0, len(arr)-1)
+# print("1st way", arr, pivot_index)
 
 # patitioning using hoars method where pivot is [l+r]/2
 def partitioner2(arr, l, r):
     pivot_index = (l+r)//2
     pivot_value = arr[pivot_index]
-    print("pivot element is ", pivot_value)
     i = l
     j = r
     while True:
@@ -43,5 +42,23 @@ def partitioner2(arr, l, r):
         # swap element from both side
         arr[i], arr[j] = arr[j], arr[i]
 arr1 = [12,3,6,74,23,7,10,3,22,19]
-pivot_index = partitioner2(arr1, 0, len(arr1)-1)
-print("2nd way", arr1, pivot_index)
+# pivot_index = partitioner2(arr1, 0, len(arr1)-1)
+# print("2nd way", arr1, pivot_index)
+
+def quick_sort(arr, l, r):
+    if l < r:
+        pivot_index = partitioner(arr, l, r)
+        quick_sort(arr, l, pivot_index-1)
+        quick_sort(arr, pivot_index+1, r)
+
+quick_sort(arr, 0, len(arr)-1)
+print("after the first sorting", arr)
+
+def quick_sort1(arr, l, r):
+    if l < r:
+        pivot_index = partitioner1(arr, l, r)
+        quick_sort(arr, l, pivot_index-1)
+        quick_sort(arr, pivot_index+1, r)
+
+quick_sort(arr1, 0, len(arr1)-1)
+print("after the 2nd sorting", arr1)

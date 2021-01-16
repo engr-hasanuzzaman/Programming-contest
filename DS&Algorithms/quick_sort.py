@@ -3,8 +3,10 @@
 # on the right side larger number than partioner element
 # partition index, pivot element
 # right element is considered as the pivot element
+# N.B: we are partitioning element depending on the partition element
 def partitioner(arr, l, r):
     pivot_element = arr[r]
+    print("pivot element is ", pivot_element)
     i = l
     for j in range(l, r):
         if arr[j] <= pivot_element:
@@ -21,6 +23,7 @@ print("1st way", arr, pivot_index)
 def partitioner2(arr, l, r):
     pivot_index = (l+r)//2
     pivot_value = arr[pivot_index]
+    print("pivot element is ", pivot_value)
     i = l
     j = r
     while True:

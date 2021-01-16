@@ -1,3 +1,8 @@
+# Ruby pry binding like debugging
+```python
+impory code
+code.interact(local=dict(globals(), **locals()))
+```
 # important SDL for competetive programming
 - python follow **alllowercase** naming convention
 ## collections

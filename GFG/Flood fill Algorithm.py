@@ -46,3 +46,35 @@ class Solution:
 	                visited[i+1][j] = True
 	                images[i+1][j] = newColor
 		return images
+
+# DFS solution
+# getting runtime error on the last recursion
+class Solution:
+	def floodFill(self, images, sr, sc, newColor):
+	    targetColor = images[sr][sc]
+	    Solution.DFS(images, sr, sc, newColor, targetColor)
+	    
+		return images
+    def DFS(images, i, j, newColor, targetColor):
+        row_size = len(images)
+	    if row_size == 0:
+	        return
+        col_size = len(images[0])
+        images[i][j] = newColor
+        
+        # left
+        if j > 0 and images[i][j-1] == targetColor:
+	        Solution.DFS(images, i, j-1, newColor, targetColor)
+        
+        # right
+        if j+1 < col_size and images[i][j+1] == targetColor :
+            Solution.DFS(images, i, j+1, newColor, targetColor)  
+       
+        # top
+        if i > 0 and images[i-1][j] == targetColor:
+            Solution.DFS(images, i-1, j, newColor, targetColor)
+        
+        # bottom
+        if i+1 < row_size and images[i+1][j] == targetColor:
+            # print()
+            Solution.DFS(images, i+1, j, newColor, targetColor)

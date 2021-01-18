@@ -67,3 +67,4 @@ code.interact(local=dict(globals(), **locals()))
 
 ## itertools
 - common usefull itertools are `product, permutation, accumulate, combinations, groupby and infinite iterators`
+- `list(product([1,2], [3,4]))` is `[1,3], [1,4], [2,3], [2,4]`. `product` take another optional parameter called `repead=number`

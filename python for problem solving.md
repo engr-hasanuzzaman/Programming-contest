@@ -64,3 +64,6 @@ code.interact(local=dict(globals(), **locals()))
 - `Counter(stc).most_common(1)` [] of tuple
 - `namedtuple` like `structure`
 - `defaultdict(int/list)` 
+
+## itertools
+- common usefull itertools are `product, permutation, accumulate, combinations, groupby and infinite iterators`

@@ -69,3 +69,5 @@ code.interact(local=dict(globals(), **locals()))
 - common usefull itertools are `product, permutation, accumulate, combinations, groupby and infinite iterators`
 - `list(product([1,2], [3,4]))` is `[1,3], [1,4], [2,3], [2,4]`. `product` take another optional parameter called `repead=number`
 - `permutation` will run permutaion over all the possibles position. `permutation([1,2,3], 2)` will take 2 elements at a time and made permutation `[(1, 2), (1, 3), (2, 1), (2, 3), (3, 1), (3, 2)]`
+- `list(itertools.combinations_with_replacement([1,2,3], 2))` is `[(1, 1), (1, 2), (1, 3), (2, 2), (2, 3), (3, 3)]` here same element will be used to make combination also
+- `list(itertools.accumulate([1,2,3,4]))` is `[1, 3, 6, 10]`. `list(itertools.accumulate([1,2,3,4], func=operator.mul))` is `[1, 2, 6, 24]`

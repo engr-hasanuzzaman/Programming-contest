@@ -73,3 +73,19 @@ code.interact(local=dict(globals(), **locals()))
 - `list(itertools.accumulate([1,2,3,4]))` is `[1, 3, 6, 10]`. `list(itertools.accumulate([1,2,3,4], func=operator.mul))` is `[1, 2, 6, 24]`, `list(itertools.accumulate([1,4,3,4], func=max))` is `[1, 4, 4, 4]`. If we use min instead it will be `[1,1,1,1]`
 - `dict(itertools.groupby([{'name': 'a', 'age': 25}, {'name': 'b', 'age': 26}, {'name': 'c', 'age': 25}], key=lambda o: o['age']))` that will group the elements by age
 - `count, cycle and repeat` are the infinite iterator. `for i in repeat(1, 10)` will repeat 1 for 10 times. `cycle([1,2,3]` will repeat as `1 2 3 1 2 3 ....`. `count(10)` will generate `10 11 12 .......`
+
+## lambda
+- one line anonymous function `lambda params: expression`
+- `reduce(lambda acc, a: acc + a, a, -145)` where -145 initial value of acc
+
+## exception
+```python
+try:
+    raise Exception("custom exception")
+except Exception as ex:
+    print(ex)
+else:
+    print("No exception")
+finally:
+    print("I will run always")
+```

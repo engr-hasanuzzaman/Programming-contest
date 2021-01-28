@@ -48,17 +48,81 @@ class MinQueue:
         
 
 # test ing
-q = MinQueue(10)
+# q = MinQueue(10)
+# q.push(4)
+# q.push(1)
+# print(q.elm_q, q.min()) # this should 1
+# assert(q.min() == 1)
+# q.pop()
+# assert(q.min() == 1)
+# print(q.elm_q, q.min())
+# q.pop()
+# assert(q.min() == None)
+# print(q.elm_q, q.min())
+# q.push(10)
+# q.push(11)
+# q.push(2)
+# q.push(12)
+# q.push(13)
+# q.push(1)
+# q.push(14)
+# q.push(15)
+# assert(q.min() == 1)
+# q.pop()
+# assert(q.min() == 1)
+# q.pop()
+# assert(q.min() == 1)
+# q.pop()
+# q.pop()
+# q.pop()
+# q.pop()
+# print(q.elm_q)
+# assert(q.min() == 14)
+
+# simplified min queue
+# during the enqueuing, we will keep (value, insert)
+class SminQ:
+    def __init__(self, n):
+        self.size = n
+        self.q = deque([])
+        self.add_count = 0
+        self.remove_count = 0
+    
+    def push(self, elm):
+        while self.q and self.q[0][0] > elm:
+            self.q.popleft()
+        self.q.appendleft((elm, self.add_count))
+        self.add_count += 1
+
+    def pop(self):
+        if self.isEmpty():
+            return None
+        if self.remove_count == self.q[-1][1]:
+            self.q.pop()
+        self.remove_count += 1
+
+    def isEmpty(self):
+        if not self.q:
+            return True
+        return False
+    
+    def min(self):
+        if self.isEmpty():
+            return None
+        return self.q[-1][0]
+
+# test ing
+q = SminQ(10)
 q.push(4)
 q.push(1)
-print(q.elm_q, q.min()) # this should 1
+# print(q.q, q.min()) # this should 1
 assert(q.min() == 1)
 q.pop()
 assert(q.min() == 1)
-print(q.elm_q, q.min())
+# print(q.elm_q, q.min())
 q.pop()
 assert(q.min() == None)
-print(q.elm_q, q.min())
+# print(q.elm_q, q.min())
 q.push(10)
 q.push(11)
 q.push(2)
@@ -76,5 +140,5 @@ q.pop()
 q.pop()
 q.pop()
 q.pop()
-print(q.elm_q)
+# print(q.elm_q)
 assert(q.min() == 14)

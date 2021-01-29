@@ -142,3 +142,5 @@ q.pop()
 q.pop()
 # print(q.elm_q)
 assert(q.min() == 14)
+
+# TODO: implement min queue using stack

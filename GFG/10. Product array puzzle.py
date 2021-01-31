@@ -27,3 +27,25 @@ def productExceptSelf(arr, n):
     for num in arr:
         pArr.append(total_product // num)
     return pArr
+
+'''
+2nd way could be creat prefixPro, suffixPro to contain prefix and suffix produc 
+that need two extra array
+'''
+
+'''
+3rd, method using one extra array.
+1. Keep profix production on pa array as
+    temp = 1
+    for i, num in enumberate(arr):
+        pa[i] = temp
+        temp *= arr[i]
+    
+2. Traverse array from last to first and update the pa with suffix product
+temp = 1
+for i in range(n-1, -1, -1):
+    pa[i] *= temp
+    temp *= arr[i]
+
+so, pa contain the answer
+'''

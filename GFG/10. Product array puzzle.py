@@ -49,3 +49,18 @@ for i in range(n-1, -1, -1):
 
 so, pa contain the answer
 '''
+
+def productExceptSelf(arr, n):
+    pa = [1 for _ in range(n)]
+    prev_prod = 1
+    # update array as a[i] contain left side product
+    for i, num in enumerate(arr):
+        pa[i] = prev_prod
+        prev_prod *= num
+        
+    # from right to left and update the value with * of right size product
+    prev_prod = 1
+    for i in range(n - 1, -1, -1):
+        pa[i] *= prev_prod
+        prev_prod *= arr[i]
+    return pa

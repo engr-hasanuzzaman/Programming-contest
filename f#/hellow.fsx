@@ -1,3 +1,4 @@
+// https://fsharp.org/use/linux/
 open System
 
 let hello() = 

@@ -25,7 +25,8 @@ code.interact(local=dict(globals(), **locals()))
  - 2 ways to create list `l1 = []` & `l2 = list()`
  - `len(l1)` will return list length
  - if `l = [1,2,3]` `l[1:1] = [100]` will be `1,100,2,3`
- - import list methods are `sort, remove(elm), insert(index, val), pop(), reverse(), clear(), count(elm), index(elm), len(list)`
+ - import list methods are `sort, remove(elm), insert(index, val), pop(), reverse(), clear(), count(elm), index(elm), len(list), list.extend(iterable)`
+ - `a = []; a.extend("hello")` will `a: ['h', 'e', 'l', 'l', 'o']`
  - do not use `l1 = l2` to copy `l2` to `l1` that copy the reference
  - 4 ways to copy a list `l2 = l1.copy()`, `l2 = list(l1)`, `l2 = l1[:1]` `l2 = [i for i in l1]`
  - uppacking the list `a, *b, c = [1,2,3,4,5,6]` then `a is 1, b is [2,3,4,5] and c is 6 `

@@ -43,7 +43,9 @@ code.interact(local=dict(globals(), **locals()))
  - uppacking the list `a, *b, c = [1,2,3,4,5,6]` then `a is 1, b is [2,3,4,5] and c is 6 `
  - `for i, n in enumerate(li)` will return list element with index 
  ## tuple
- - 3 ways to create tuple `t1 = (1,2,3)`, `t2 = 4,5,6` and `t3 = tuple([7,8,9])`. N.B: `t4 = (10,)`
+ - immutable data structure, usually used for heterogenous elements. List is usually used for homogenous
+ - 3 ways to create tuple `t1 = (1,2,3)`, `t2 = 4,5,6` and `t3 = tuple([7,8,9])`. 
+ - **N.B:** to create a tuple with single or empty element have special case`one = (10,), empty = ()`
  ### diff btw list & tuple
  - tuple is immutable but list emutable as a resutl tuple take small memory and faster operation time `timeit.timeit(stmt="[1,2,3,4,5,6,7,8,9]", number=10000000)` take time `0.5227536740003416` but `timeit.timeit(stmt="(1,2,3,4,5,6,7,8,9)", number=10000000)` take time `0.08346654900014983` that is much faster
 

@@ -57,7 +57,7 @@ code.interact(local=dict(globals(), **locals()))
     - dict.popitems() (python 3.7 it will remove last insert item)
 - loop over dict
     - `for key in dict`
-    - `for key in dict.keys()`
+    - `for key in dict.keys()` or `for key in list(dict)`
     - `for value in dict.values()`
     - `for key, val in dict.items()`
 ## sets

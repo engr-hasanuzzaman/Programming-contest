@@ -34,9 +34,12 @@ class SLinkedList:
         
         head = self.__head
         prev = None
-        while head and pos > 1:
+        while head and pos >= 1:
             if pos == 1:
+                print(head.val)
                 prev.next = head.next
+                if self.__tail == head:
+                    self.__tail = prev
                 return head.val
             else:
                 pos -= 1
@@ -84,8 +87,18 @@ class TestLinkedList(unittest.TestCase):
         ls.add(2)
         ls.add(3)
         self.assertEqual(ls.head().val, 1)
-        print(ls.toArray())
         self.assertEqual(ls.tail().val, 3)
+    
+    def test_remove_by_pos(self):
+        ls = SLinkedList()
+        ls.add(1)
+        ls.add(2)
+        ls.add(3)
+        ls.add(4)
+        ls.add(5)
+        ls.add(6)
+        self.assertEqual(ls.removeByPos(3), 3)
+        self.assertEqual(ls.tail().val, 6)
 
 if __name__=='__main__':
     unittest.main()

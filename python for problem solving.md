@@ -101,3 +101,6 @@ else:
 finally:
     print("I will run always")
 ```
+
+# insert new data to the sorted list using `bisect`
+- let `a  = [1,2,6]` then `bisect.insort(a, 3)` that will be `[1, 2, 3, 6]`

@@ -18,7 +18,6 @@ class Solution:
                 so during setting the new min_price we will sub-track the fee so that we get higher value we do not need to give
                 the transaction fee again or we might get small value, to buy that time will be more profitable.
                 In other word if (next value is < current - fee) using new transaction will be profitable
-                
                 """
                 min_price = prices[i] - fee
         return profit

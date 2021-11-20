@@ -41,7 +41,6 @@ def solve(board)
     # so, that will be 'O' or convernt 'O' to 'x'
     for i in 0...board.size
         for j in 0...board.first.size
-            if board[i][j] == 1
                 board[i][j] = 'O'
             elsif board[i][j] == 'O'
                 board[i][j] = 'X'

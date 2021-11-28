@@ -1,3 +1,7 @@
+'''
+any base < 10, convert to decimal base
+'''
+
 def to_decimal(number, base: int) -> int:
     multiplier, result = 1, 0
 

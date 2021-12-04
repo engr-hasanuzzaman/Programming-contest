@@ -13,3 +13,6 @@ s.translate(str.maketrans('', '', string.punctuation))
 - `10.5.as_integer_ratio()` -> `(21, 2)`
 
 ### The `discard()` method removes the specified item from the set. This method is different from the `remove()` method, because the `remove()` method will raise an error if the specified item does not exist, and the `discard()` method will not
+
+- `"sumon".rjust(50, '_')` -> `_____________________________________________sumon`
+- `"sumon".ljust(50, '_')` -> `sumon_____________________________________________`

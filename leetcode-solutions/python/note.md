@@ -11,3 +11,5 @@ s.translate(str.maketrans('', '', string.punctuation))
 - to convert string to int or change the base we will use `int(str_num, base)` method
 - `divmod(18,12) -> (1, 6)`
 - `10.5.as_integer_ratio()` -> `(21, 2)`
+
+### The `discard()` method removes the specified item from the set. This method is different from the `remove()` method, because the `remove()` method will raise an error if the specified item does not exist, and the `discard()` method will not

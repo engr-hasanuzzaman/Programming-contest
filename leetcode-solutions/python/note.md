@@ -16,3 +16,5 @@ s.translate(str.maketrans('', '', string.punctuation))
 
 - `"sumon".rjust(50, '_')` -> `_____________________________________________sumon`
 - `"sumon".ljust(50, '_')` -> `sumon_____________________________________________`
+
+### Using `locals()` we can see list of available local variables

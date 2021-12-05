@@ -72,6 +72,8 @@ code.interact(local=dict(globals(), **locals()))
 - N.B: since string is immutable, all the string method return new string
 - `str.upper(), str.lower(), startwith, endwith, find, count, replace, split()`
 - str formatting `"the price is {:.2f}".format(p)` after point two value. Using `f` string (from python 3.6) `f"the price is {p:.10f}"`
+- `strip('chars'), lstrip('chars'), rstrip('chars')`
+- `"Hello".swapcase()` -> `hELLO`
 
 ## collections
 - important iteams from `collections` are `Counter,namedtuple, OrderedDict, defaultdict, deque`

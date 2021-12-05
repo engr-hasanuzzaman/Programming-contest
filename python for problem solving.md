@@ -70,10 +70,11 @@ code.interact(local=dict(globals(), **locals()))
 
 ## string (immutable datastructure)
 - N.B: since string is immutable, all the string method return new string
-- `str.upper(), str.lower(), startwith, endwith, find, count, replace, split()`
+- `str.upper(), str.lower(), startwith, endwith, find, rfind, lfind, count(t, start, end), replace(t, u, n), split()`
 - str formatting `"the price is {:.2f}".format(p)` after point two value. Using `f` string (from python 3.6) `f"the price is {p:.10f}"`
 - `strip('chars'), lstrip('chars'), rstrip('chars')`
 - `"Hello".swapcase()` -> `hELLO`
+- similar to `swapcase`, `upper, lower, capitalize` return copy of the string
 
 ## collections
 - important iteams from `collections` are `Counter,namedtuple, OrderedDict, defaultdict, deque`

@@ -109,3 +109,6 @@ finally:
 
 # insert new data to the sorted list using `bisect`
 - let `a  = [1,2,6]` then `bisect.insort(a, 3)` that will be `[1, 2, 3, 6]`
+
+# string interpolation
+- `f_name = 'Hasan'; l_name = 'Zaman'` -> `fl = f'{f_name} {l_name}'` `# 'Hasan Zaman'`

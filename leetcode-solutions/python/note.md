@@ -18,3 +18,24 @@ s.translate(str.maketrans('', '', string.punctuation))
 - `"sumon".ljust(50, '_')` -> `sumon_____________________________________________`
 
 ### Using `locals()` we can see list of available local variables
+
+### `nonlocal` point to immediate outer local scope except global
+```python
+x = 0
+def outer():
+    x = 1
+    def inner():
+        nonlocal x
+        x = 2
+        print("inner:", x)
+
+    inner()
+    print("outer:", x)
+
+outer()
+print("global:", x)
+
+# inner: 2
+# outer: 2
+# global: 0
+```

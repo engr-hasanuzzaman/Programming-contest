@@ -35,3 +35,22 @@ class Solution:
         """
         k = k % len(nums)
         nums[:] = nums[-k:] + nums[:-k]
+
+# solution 3: using reverse
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        size = len(nums)
+        k = k % size
+        self.reverse(0, size-1, nums)
+        self.reverse(0, k-1, nums)
+        self.reverse(k, size-1, nums)
+        
+    def reverse(self, start, end, s):
+        while start < end:
+            s[start], s[end] = s[end], s[start]
+            start += 1
+            end -= 1
+            

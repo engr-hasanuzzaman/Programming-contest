@@ -18,6 +18,8 @@ class DisJoin():
             for i in range(len(self.edges)):
                 if self.edges[i] == root2:
                     self.edges[i] = root1
+    def connected(self, edge1, edge2):
+        return self.edges[edge1] == self.edges[edge2]
 
 # testing section
 ds = DisJoin(9)
@@ -29,6 +31,7 @@ ds.join(4, 2)
 ds.join(5, 6)
 ds.join(5, 7)
 
-# assert ds.find(3) == ds.find(0)
-print(ds.find(4), ds.find(0))
-print(ds.edges)
+assert ds.connected(0, 4) == True
+assert ds.connected(0, 5) == False
+assert ds.connected(7, 5) == True
+assert ds.connected(7, 8) == False

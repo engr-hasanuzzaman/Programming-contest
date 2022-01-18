@@ -1,4 +1,5 @@
 # find fast implementation
+from mimetypes import init
 import unittest
 
 
@@ -52,3 +53,56 @@ assert uf.connected(4, 9) == False
 uf.union(9, 4)
 assert uf.connected(4, 9) == True
 print(uf.edges)
+
+# quick union
+class QuickUnionDisjoin():
+    def __init__(self, size) -> None:
+        self.edges = [e for e in range(size)]
+
+    # find the root of passing edge
+    # worse case time complexity is O(N)
+    def find(self, edge):
+        while edge != self.edges[edge]:
+            edge = self.edges[edge]
+        return edge
+    
+    # worse case scenirio is O(N) as we are using find method which has O(N) time complexity
+    def union(self, e1, e2):
+        root1 = self.find(e1)
+        root2 = self.find(e2)
+        if root1 != root2:
+            self.edges[root1] = root2
+
+    def connected(self, e1, e2):
+        return self.find(e1) == self.find(e2)
+    
+uf = QuickUnionDisjoin(10)
+# 1-2-5-6-7 3-8-9 4
+uf.union(1, 2)
+uf.union(2, 5)
+uf.union(5, 6)
+uf.union(6, 7)
+uf.union(3, 8)
+uf.union(8, 9)
+assert uf.connected(1, 5) == True
+assert uf.connected(5, 7) == True
+assert uf.connected(4, 9) == False
+# 1-2-5-6-7 3-8-9-4
+uf.union(9, 4)
+assert uf.connected(4, 9) == True
+print(uf.edges)
+
+ds = QuickUnionDisjoin(9)
+ds.union(0, 1)
+ds.union(0, 2)
+ds.union(2, 3)
+ds.union(4, 2)
+
+ds.union(5, 6)
+ds.union(5, 7)
+
+assert ds.connected(0, 4) == True
+assert ds.connected(0, 5) == False
+assert ds.connected(7, 5) == True
+assert ds.connected(7, 8) == False
+print(ds.edges)

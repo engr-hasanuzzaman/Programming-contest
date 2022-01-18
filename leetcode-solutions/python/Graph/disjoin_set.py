@@ -16,8 +16,8 @@ class DisJoin():
         root2 = self.find(node2)
         if root1 != root2:
             for i in range(len(self.edges)):
-                if self.edges[i] == root1:
-                    self.edges[root2] = root1
+                if self.edges[i] == root2:
+                    self.edges[i] = root1
 
 # testing section
 ds = DisJoin(9)

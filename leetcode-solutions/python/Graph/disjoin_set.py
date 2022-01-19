@@ -106,3 +106,62 @@ assert ds.connected(0, 5) == False
 assert ds.connected(7, 5) == True
 assert ds.connected(7, 8) == False
 print(ds.edges)
+
+class DisjoinRank():
+    def __init__(self, n) -> None:
+        self.edges = [-1 for _ in range(n)]
+
+    def find(self, edge):
+        cur_edge = edge
+        while self.edges[cur_edge] >= 0:
+            cur_edge = self.edges[cur_edge]
+        
+        # compression
+        if edge != cur_edge:
+            self.edges[edge] = cur_edge
+        return cur_edge
+
+    def union(self, e1, e2):
+        p1 = self.find(e1)
+        p2 = self.find(e2)
+        if p1 != p2:
+            if abs(self.edges[p1]) >= abs(self.edges[p2]):
+                self.edges[p1] += self.edges[p2]
+                self.edges[p2] = p1
+            else:
+                self.edges[p2] += self.edges[p1]
+                self.edges[p1] = p2
+
+    def connected(self, e1, e2):
+        return self.find(e1) == self.find(e2)
+
+# testing section
+ds = DisjoinRank(9)
+ds.union(0, 1)
+ds.union(0, 2)
+ds.union(2, 3)
+ds.union(4, 2)
+
+ds.union(5, 6)
+ds.union(5, 7)
+
+assert ds.connected(0, 4) == True
+assert ds.connected(0, 5) == False
+assert ds.connected(7, 5) == True
+assert ds.connected(7, 8) == False
+
+uf = DisjoinRank(10)
+# 1-2-5-6-7 3-8-9 4
+uf.union(1, 2)
+uf.union(2, 5)
+uf.union(5, 6)
+uf.union(6, 7)
+uf.union(3, 8)
+uf.union(8, 9)
+assert uf.connected(1, 5) == True
+assert uf.connected(5, 7) == True
+assert uf.connected(4, 9) == False
+# 1-2-5-6-7 3-8-9-4
+uf.union(9, 4)
+assert uf.connected(4, 9) == True
+print(uf.edges)

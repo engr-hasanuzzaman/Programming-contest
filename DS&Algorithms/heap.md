@@ -6,3 +6,7 @@
 - pick the last element as the root and adjust the heap property
     - replce with max child repetedly untill new value become correct root
 **N.B: for insertion, adjustment is done from leaf to parent but for delete operation adjustment happens from root to leaf 
+
+## Heap sort has two step
+- make heap using input elements
+- delete element one by one and put at the end of the heap array which is a sorted array

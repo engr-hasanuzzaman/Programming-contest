@@ -1,0 +1,1 @@
+### heap is a complete binary tree in which each node has <= or >= value compare of all it's decendent. If root keep min, it is min heap, if root contatin max then it is max heap

@@ -16,6 +16,6 @@
 4. if the parent's color is Red
     - check the parent's sibling color. If sibling is Null or color is black, 
         do the suitable rotation and re-coloring
-    - if the parent's sibling's color is Red, re-colore and check the parent's parent's
-        is not root node then re-color it and rec-check
+    - if the parent's sibling's color is Red, re-colore (both parent and parent's sibling) and check the parent's parent's
+        is not root node (if grandfather is not root node then have to re-color the grandparent also) then re-color it and rec-check
 '''

@@ -7,6 +7,7 @@
     - replce with max child repetedly untill new value become correct root
 **N.B: for insertion, adjustment is done from leaf to parent but for delete operation adjustment happens from root to leaf 
 
+#### heapify is a process of creating heap from array which make creating heap with O(n) complexity. In the heapify proces, we will consider last element as the heap and move on the top which will make swapping reduced
 ## Heap sort has two step
 - make heap using input elements
 - delete element one by one and put at the end of the heap array which is a sorted array

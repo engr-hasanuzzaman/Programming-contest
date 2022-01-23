@@ -1,1 +1,3 @@
 ### heap is a complete binary tree in which each node has <= or >= value compare of all it's decendent. If root keep min, it is min heap, if root contatin max then it is max heap
+- when adding a new element on the heap, first it has to be added on the leaf then adjust the nodes (swap with the parent untill it the value is greater than it's parent)
+- we only can delete elment from the heap root (not from any other places)

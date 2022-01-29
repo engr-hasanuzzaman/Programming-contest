@@ -44,3 +44,38 @@ class Solution:
         # print(min_sum, total_sum)
         if size == 0: return total_sum
         return total_sum - min_sum
+
+# another solution with time complexity O(k)
+'''
+For convenience's sake I'll be referring to the beginning and the end of the row of cards as the left and right side respectively.
+
+For any given array of cards we can take n cards from the left side and m cards from the right side where n, m are non-negative integers and n + m = k.
+So we simply need to look through every pair of n and m to determine the max sum of k cards.
+
+Our initial step will be finding the sum of k cards all taken from the left side.
+On every iteration step we'll be subtracting a value from the left and adding a value from the right.
+This way we can avoid using sum() saving our ever so precious processing time.
+
+Once we get to the sum of k cards all taken from the right side, we will have checked every possible pair of n and m.
+
+So, for example:
+cardPoints = [1, 2, 3, 4, 5, 6, 7], k = 3
+[1, 2, 3], 4, 5, 6, 7 : Initial state, cursum = 6, next comes iteration
+1, 2], 3, 4, 5, 6, [7 : 1. subtract 3 and add 7, now cursum = 10
+1], 2, 3, 4, 5, [6, 7 : 2. subtract 2 and add 6, now cursum = 14
+1, 2, 3, 4, [5, 6, 7] : 3. subtract 1 and add 5, now cursum = 18
+Iteration done in 3 = k steps.
+
+The answer will be the greatest value of cursum, which in this case equals 18. This can easily be handled by another variable.
+'''
+class Solution:
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
+        length = len(cardPoints)
+        max_sum = cur_max = sum(cardPoints[:k])
+        if length == k:
+            return max_sum
+        
+        for i in range(k):
+            cur_max = cur_max - cardPoints[k - i - 1] + cardPoints[length - i - 1]
+            max_sum = max(max_sum, cur_max)
+        return max_sum

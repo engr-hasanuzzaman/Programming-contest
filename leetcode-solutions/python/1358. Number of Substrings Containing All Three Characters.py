@@ -27,3 +27,18 @@ class Solution:
                 if num_of_a > 0 and num_of_b > 0 and num_of_c > 0:
                     ans += 1
         return ans
+
+# solution using dynamic programming and sliding window
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        #a, b, c
+        cur_counter = [0, 0, 0]
+        left = 0
+        result = 0
+        for right, char in enumerate(s):
+            cur_counter[ord(char) - ord('a')] += 1
+            while cur_counter[0] > 0 and cur_counter[1] > 0 and cur_counter[2] > 0:
+                result += len(s) - right
+                cur_counter[ord(s[left]) - ord('a')] -= 1
+                left += 1
+        return result

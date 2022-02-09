@@ -32,3 +32,33 @@ def count_moves(size, row, col, ins, cur_count = 0)
     end
     return count_moves(size, new_row, new_col, ins, cur_count + 1)
 end
+
+# LTE with more passing cases
+def execute_instructions(n, start_pos, s)
+    ans = []
+    start = 0
+    moves = {
+        "R" => [0, 1],
+        "L" => [0, -1],
+        "U" => [-1, 0],
+        "D" => [1, 0]
+    }
+    while start < s.size
+        ans << count_moves(n, start_pos[0], start_pos[1], s[start..], moves)
+        start += 1
+    end
+    ans
+end
+
+def count_moves(size, row, col, instructions, moves)
+    cur_count = 0
+    instructions.each_char do |ins|
+        row = row + moves[ins[0]][0]
+        col = col + moves[ins[0]][1]
+        if row >= size || row < 0 || col >= size || col < 0
+            return cur_count
+        end
+        cur_count += 1
+    end
+    cur_count
+end

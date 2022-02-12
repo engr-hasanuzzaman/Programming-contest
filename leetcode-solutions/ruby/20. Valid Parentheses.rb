@@ -33,3 +33,25 @@ def valid?(c1, c2)
       return false
   end
 end
+
+# smaller code size
+# @param {String} s
+# @return {Boolean}
+def is_valid(s)
+    stack = []
+    pair_dict = {
+        '}' => '{',
+        ')' => '(',
+        ']' => '['
+    }
+    s.each_char do |char|
+        if char == '(' || char == '{' || char == '['
+            stack.push(char)
+        else
+            return false if stack.empty? or pair_dict[char] != stack.last
+            stack.pop
+        end
+    end
+    
+    return stack.empty?
+end

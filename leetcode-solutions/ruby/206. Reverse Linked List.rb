@@ -70,3 +70,24 @@ def reverse_list(head)
     head.next = nil
     nn
 end
+
+# using stack
+def reverse_list(head)
+    return head unless head
+    
+    stack = []
+    cur = head
+    while cur
+        stack.push(cur)
+        cur = cur.next
+    end
+
+    new_head = cur = stack.pop
+    until stack.empty?
+        cur.next = stack.pop
+        cur = cur.next
+    end
+
+    cur.next = nil
+    new_head
+end

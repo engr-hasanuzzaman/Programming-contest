@@ -36,3 +36,29 @@ def convert(s, num_rows)
   
   answer.flatten.compact.join("")
 end
+
+# simpler implementation
+def convert(s, num_rows)
+    return s if num_rows == 1 || s.size < num_rows
+    # create rows
+    rows = Array.new(num_rows){ [] }
+    step = 1
+    row_num = 0
+    
+    # itirate throug each char and put on the row_num
+    s.each_char do |char|
+        rows[row_num] << char
+        row_num += step
+        
+        # since this is the last row, from next, go up
+        if row_num == num_rows - 1
+            step = -1
+        end
+        
+        #  since this is the first row, from the next go down
+        if row_num == 0
+            step = 1
+        end
+    end
+    rows.map{|row| row.join}.join
+end

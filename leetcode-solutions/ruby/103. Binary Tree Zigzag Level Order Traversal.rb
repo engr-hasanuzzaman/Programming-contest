@@ -36,3 +36,39 @@ def zigzag_level_order(root)
     end
     ans
 end
+
+# using two stack
+# left read left child -> right child, then left child <- right child
+def zigzag_level_order(root)
+    return [] unless root
+    
+    stack1 = [root]
+    stack2 = []
+    ans = []
+    order = 0
+    until stack1.empty? && stack2.empty?
+        level_size = if stack1.size > 0
+                        stack1.size
+                    else
+                        stack2.size
+                    end
+        level_nodes = []
+
+        level_size.times do 
+            if order % 2 == 0
+                cur_node = stack1.pop
+                stack2.push cur_node.left if cur_node.left
+                stack2.push cur_node.right if cur_node.right
+            else
+                cur_node = stack2.pop
+                stack1.push cur_node.right if cur_node.right
+                stack1.push cur_node.left if cur_node.left
+            end
+            
+            level_nodes.push cur_node.val
+        end
+        order += 1
+        ans << level_nodes
+    end
+    ans
+end

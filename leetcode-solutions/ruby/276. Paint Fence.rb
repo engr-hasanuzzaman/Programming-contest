@@ -63,3 +63,22 @@ def num_ways(n, k)
     
     dp.last
 end
+
+# with constant space complexity
+def num_ways(n, k)
+    return 0 if n == 0
+    return k if n == 1
+    
+    # for ith position = (k-1) * (total_ways(i-1) + total_ways(i-2))
+    
+    two_post_back = k
+    one_post_back = k * k
+    
+    (2...n).each do |num|
+        cur_num = (k - 1) * (two_post_back + one_post_back)
+        two_post_back = one_post_back
+        one_post_back = cur_num
+    end
+    
+    return one_post_back
+end

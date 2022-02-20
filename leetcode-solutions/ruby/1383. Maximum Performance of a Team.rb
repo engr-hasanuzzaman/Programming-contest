@@ -8,6 +8,7 @@ include Containers
 # @param {Integer[]} efficiency
 # @param {Integer} k
 # @return {Integer}
+# TLE soution with ruby minHeap implementation
 def max_performance(n, speed, efficiency, k)
     sum_of_speed = 0
     max_performance = 0

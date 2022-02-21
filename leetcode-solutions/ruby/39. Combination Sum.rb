@@ -24,3 +24,26 @@ def combination(result, comb, candidates, target)
       end
   end
 end
+
+# more faster with sorting the candidate
+def combination_sum(candidates, target)
+  ans = []
+  combination(candidates.sort, target, ans, [])
+  ans.uniq
+end
+
+def combination(candidates, target, ans, cur_list)
+  if target.zero?
+      ans << cur_list.map{|e| e}.sort
+  end
+  
+  if candidates.first > target || target < 0
+      return
+  end
+  
+  candidates.each do |candidate|
+      cur_list << candidate
+      combination(candidates, target - candidate, ans, cur_list)
+      cur_list.pop
+  end
+end

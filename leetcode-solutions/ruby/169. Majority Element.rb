@@ -18,3 +18,7 @@ end
 
 # since majority element frequency is > size / 2, if we sort the nums size / 2 th element will be
 # the majority element
+def majority_element(nums)
+    nums.sort!
+    nums[nums.size / 2]
+end

@@ -9,8 +9,6 @@ def find_first_index(arr, target)
         mid = left + (right - left) / 2
         if arr[mid] == target && arr[mid-1] < target
             return mid
-        elsif arr[mid] == target
-            right = mid - 1
         elsif arr[mid] < target
             left = mid + 1
         else

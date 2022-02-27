@@ -27,3 +27,34 @@ puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 0 #{find_first_index(a
 puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 9 #{find_first_index(arr, 9)}"
 puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 5 #{find_first_index(arr, 5)}"
 puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 10 #{find_first_index(arr, 10)}"
+
+def find_right_index(arr, target)
+    return -1 if arr.empty? || arr.first > target || arr.last < target
+    return arr.size - 1 if arr.last == target
+
+    left = 0
+    right = arr.size - 1
+    while left <= right
+        mid = left + (right - left) / 2
+        if arr[mid] == target && arr[mid+1] > target
+            return mid
+        elsif arr[mid] > target
+            right = mid - 1
+        else
+            left = mid + 1
+        end
+    end
+
+    return -1
+end
+
+arr = [1,2,2,2,3,3,3,3,3,3,4,6,7,7,7,7,7,9]
+puts "-------------- find the right most index ------------"
+puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 2 #{find_right_index(arr, 2)}"
+puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 3 #{find_right_index(arr, 3)}"
+puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 7 #{find_right_index(arr, 7)}"
+puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 4 #{find_right_index(arr, 4)}"
+puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 0 #{find_right_index(arr, 0)}"
+puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 9 #{find_right_index(arr, 9)}"
+puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 5 #{find_right_index(arr, 5)}"
+puts "--------[1,2,2,2,3,3,3,3,3,3,4,5,6,7,7,7,7,7,9] for 10 #{find_right_index(arr, 10)}"

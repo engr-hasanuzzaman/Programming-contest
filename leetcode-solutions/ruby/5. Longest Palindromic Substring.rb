@@ -51,3 +51,33 @@ def longest_palindrome(s)
   # return charts from p_i to (p_i + m_size - 1)
   s[p_i...p_i+m_size]
 end
+
+# using expand from the middle option
+# @param {String} s
+# @return {String}
+def longest_palindrome(s)
+    s_idx = e_idx = 0
+    n = s.size
+    n.times do |i|
+        l1 = expand_from_middle(s, i, i) # will cover aba
+        l2 = expand_from_middle(s, i, i + 1) # will cover abba
+        len = [l1, l2].max
+        if len > e_idx - s_idx
+            s_idx = i - (len - 1) / 2
+            e_idx = i + (len / 2)
+        end
+    end
+    
+    s[s_idx..e_idx]
+end
+
+def expand_from_middle(s, left, right)
+    return 0 if s.size.zero? || left > right
+    
+    while left >= 0 && right < s.size && s[left] == s[right]
+        left -= 1
+        right += 1
+    end
+    
+    right - left - 1
+end

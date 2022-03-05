@@ -25,3 +25,22 @@ def rearrange_array(nums)
     end
     nums
 end
+
+# with single pass
+# @param {Integer[]} nums
+# @return {Integer[]}
+def rearrange_array(nums)
+    ans = Array.new(nums.size)
+    p_idx = 0
+    n_idx = 1
+    nums.each do |num|
+        if num > 0
+            ans[p_idx] = num
+            p_idx += 2
+        else
+            ans[n_idx] = num
+            n_idx += 2
+        end
+    end
+    ans
+end

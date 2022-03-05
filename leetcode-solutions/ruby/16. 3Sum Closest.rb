@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/3sum-closest/
 
+# TLE solution
 # @param {Integer[]} nums
 # @param {Integer} target
 # @return {Integer}
@@ -37,4 +38,39 @@ def combination(result, comb, nums, target, rem_num, s_index)
       comb.pop
   end
       
+end
+
+# accepted solution
+# @param {Integer[]} nums
+# @param {Integer} target
+# @return {Integer}
+def three_sum_closest(nums, target)
+    nums.sort!
+    closest_num = nil
+    n = nums.size
+    (n - 2).times do |index|
+        closest_num = two_sum_closest(nums, nums[index], index+1, target, closest_num)
+    end
+    closest_num
+end
+
+def two_sum_closest(nums, num, index, target, closest_num)
+    left = index
+    right = nums.size - 1
+    while left < right
+        cur_sum = nums[left] + nums[right] + num
+        if cur_sum > target
+            right -= 1
+        elsif cur_sum < target
+            left += 1
+        else
+            return cur_sum
+        end
+        
+        if closest_num.nil? || (cur_sum - target).abs < (closest_num - target).abs
+            closest_num = cur_sum
+        end
+    end
+    
+    closest_num
 end

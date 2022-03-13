@@ -43,6 +43,6 @@ def str_find(text, str)
     ans
 end
 
-text = 'CodeNCode is the best resouce for competitive coding'
+text = 'CodeNCode is the best resouce for competitive coding CaCCC'
 str = 'Co'
 puts "---------#{str_find(text, str)} === [0, 5]"

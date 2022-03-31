@@ -1,6 +1,6 @@
 def gen_subset(n, k = 1, sub_set = [], ans = [])
   if k == n + 1
-    ans << sub_set[0..1]
+    ans << sub_set[0..-1]
   else
     gen_subset(n, k + 1, sub_set, ans)
     sub_set << k

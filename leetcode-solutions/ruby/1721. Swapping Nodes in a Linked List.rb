@@ -31,3 +31,23 @@ def swap_nodes(head, k)
 
   head
 end
+
+# refactored code
+def swap_nodes(head, k)
+  cur = head
+  (k - 1).times { cur = cur.next }
+
+  kth_from_first = cur
+  kth_from_last = head
+  cur = cur.next
+
+  # find kth from the last
+  until cur.nil?
+    kth_from_last = kth_from_last.next
+    cur = cur.next
+  end
+
+  kth_from_first.val, kth_from_last.val = kth_from_last.val, kth_from_first.val
+
+  head
+end

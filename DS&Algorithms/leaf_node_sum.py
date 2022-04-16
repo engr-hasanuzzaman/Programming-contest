@@ -36,3 +36,12 @@ root.children.append(four)
 
 assert sub_of_leaf(root) == 13
 
+def max_height(node):
+    if not node: return 0
+    if is_leaf(node): return 1
+    return max([max_height(child) + 1 for child in node.children])
+
+def is_leaf(node):
+    return node and len(node.children) == 0
+
+assert max_height(root) == 3

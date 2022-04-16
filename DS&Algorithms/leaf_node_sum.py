@@ -24,11 +24,12 @@ three = TreeNode(3)
 five = TreeNode(5)
 four = TreeNode(4)
 ten = TreeNode(10)
+neg_five = TreeNode(-5)
+one = TreeNode(1)
+
 four.children.append(three)
 four.children.append(five)
 four.children.append(ten)
-
-neg_five = TreeNode(-5)
 
 root = TreeNode(10)
 root.children.append(neg_five)
@@ -38,10 +39,28 @@ assert sub_of_leaf(root) == 13
 
 def max_height(node):
     if not node: return 0
-    if is_leaf(node): return 1
+    if is_leaf(node): return 0
     return max([max_height(child) + 1 for child in node.children])
 
 def is_leaf(node):
     return node and len(node.children) == 0
 
-assert max_height(root) == 3
+assert max_height(root) == 2
+
+# re-declare all the nodes
+three = TreeNode(3)
+five = TreeNode(5)
+four = TreeNode(4)
+ten = TreeNode(10)
+neg_five = TreeNode(-5)
+one = TreeNode(1)
+
+three.children.append(one)
+five.children.append(four)
+five.children.append(three)
+
+# root
+ten.children.append(five)
+ten.children.append(neg_five)
+
+assert max_height(ten) == 3

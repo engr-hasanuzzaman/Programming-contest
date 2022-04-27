@@ -1,0 +1,2 @@
+#
+- The intution of this DS is, every number can be represent as the sum of binary powere. Ex. 1 = 0 + 2^0, 2 = 0 + 2^1, 7 = 2^2 + 2^1+2^0. We will store sum in this interval so, to get total sum the time complexity will be O(logn)

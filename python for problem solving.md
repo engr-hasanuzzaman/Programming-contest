@@ -116,3 +116,14 @@ finally:
 
 # must reesd Python document before technical interview with python
 - https://docs.python.org/3/library/itertools.html#
+- generate sub-set of the all elements
+```python
+a = [1,2,3,4]
+ans = []
+for i in range(1, len(a) + 1):
+    ans.append(list(itertools.combinations(a, i)))
+```
+In ruby
+```ruby
+a.combinations(3)
+```

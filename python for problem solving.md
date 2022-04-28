@@ -113,3 +113,6 @@ finally:
 # string interpolation
 - `f_name = 'Hasan'; l_name = 'Zaman'` -> `fl = f'{f_name} {l_name}'` `# 'Hasan Zaman'`
 - `f_name = 'Hasan'; l_name = 'Zaman'` -> `print(f'{f_name = } {l_name = }'` `f_name = 'Hasan' l_name = 'Zaman'`
+
+# must reesd Python document before technical interview with python
+- https://docs.python.org/3/library/itertools.html#

@@ -17,11 +17,8 @@ class Solution:
                 if p[j-1] == '?' or p[j-1] == s[i-1]:
                     dp[i][j] = dp[i-1][j-1]
                 elif p[j-1] == '*':
-                    # dp[i][j-1] contains result if we ignore current *
-                    # dp[i-1][j-1] if we consider * is = to current char
-                    # dp[i-1][j] if we consider * is part of wildcard
-                    dp[i][j] = dp[i-1][j-1] or dp[i][j-1] or dp[i-1][j]
-                else:
-                    dp[i][j] = False
-    
+                    # dp[i][j-1] contains result if we ignore current * (empty match)
+                    # dp[i-1][j] if we consider current char part of * (wildcard)
+                    dp[i][j] = dp[i][j-1] or dp[i-1][j]
+
         return dp[-1][-1]

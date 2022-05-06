@@ -1,3 +1,4 @@
+# rotation will happen within three nodes
 class Node:
     def __init__(self,x):
         self.data=x
@@ -44,10 +45,13 @@ class Solution:
         return node.height
     
     def rightRotation(self, root):
+        # mark new node
         newRoot = root.left
+        # save right of the new node
         t3 = newRoot.right
         # rotation
         newRoot.right = root
+        # new node's right will be old node's left now
         root.left = t3
         
         # first update height of root then new root

@@ -5,7 +5,12 @@ def n_queen_problem(n, row = 0, ans = [0], cols = {}, diagonal1 = {}, diagonal2 
     n.times do |col|
       next if cols[col] || diagonal2[col + row] || diagonal1[col - row + n - 1] # zero based that's why - 1
       cols[col] = true # column
+      # sum of row + col is same for this row
+      #    /
+      #   /
+      # /
       diagonal2[col + row] = true # forward slash diagonal
+      # diff btw clm and row is same
       diagonal1[col - row + n - 1] = true # back slash diagonal
 
       n_queen_problem(n, row + 1, ans, cols, diagonal1, diagonal2)

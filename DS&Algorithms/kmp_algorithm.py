@@ -37,4 +37,23 @@ def kmp(str, pat):
         
        
             
-print(kmp("ABABDABACDABABCABAB", 'ABABCABAB'))
+# print(kmp("ABABDABACDABABCABAB", 'ABABCABAB'))
+str = 'AAAA' #'ABABCABAB'
+pi = lps(str)
+n = len(str)
+ans = [0] * (n+1)
+print(f"input {str}, pi {pi}, before {ans}")
+for i in range(n):
+    ans[pi[i]] += 1
+
+print(" after first", ans)
+
+for i in range(n-1, 0, -1):
+    ans[pi[i-1]] += ans[i]
+
+print(" after 2nd ", ans)
+
+for i in range(n+1):
+    ans[i] += 1
+
+print(" after all ", ans)

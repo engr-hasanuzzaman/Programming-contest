@@ -13,6 +13,7 @@ class Solution:
             w, cur = heappop(heap)
             for neighbor, weight in adj[cur]:
                 if dist[neighbor] > w + weight:
+                    # w + weight -> dist[cur] + weight
                     heappush(heap, (dist[cur] + weight, neighbor))
                     dist[neighbor] = w + weight
         return dist

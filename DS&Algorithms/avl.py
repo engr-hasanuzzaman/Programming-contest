@@ -55,6 +55,7 @@ class Solution:
         root.left = t3
         
         # first update height of root then new root
+        # first update height of old root otherwise newRoot heigh might be wrong
         root.height = self.calHeight(root)
         newRoot.height = self.calHeight(newRoot)
 
@@ -65,6 +66,7 @@ class Solution:
         t3 = newRoot.left
         # rotation
         newRoot.left = root
+        # new node's left will be old node's right now
         root.right = t3
     
         # update height

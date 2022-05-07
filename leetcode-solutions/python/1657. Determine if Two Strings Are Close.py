@@ -37,3 +37,11 @@ class Solution:
                 return False
 
         return True
+
+# sorter solution
+# if both string have same chars (if s1 has a then b need to has a tool) and char frequency counter is same, 
+# aab ->bba (2, 1) then according to the rules they are transformable
+class Solution:
+    def closeStrings(self, word1: str, word2: str) -> bool:
+        if len(word1) != len(word2): return False
+        return set(word1) == set(word2) and Counter(Counter(word1).values()) == Counter(Counter(word2).values())

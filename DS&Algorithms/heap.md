@@ -11,3 +11,19 @@
 ## Heap sort has two step
 - make heap using input elements
 - delete element one by one and put at the end of the heap array which is a sorted array
+## How to implement hax heap with string in python
+```python
+class MyStrig:
+    def __init__(self, elm):
+        self.elm = elm
+
+    def __lt__(self, other):
+        print(f"lt {self.elm}, {other.elm}")
+        return self.elm > other.elm
+
+    def __eq__(self, __o):
+        return self.elm == __o.elm
+
+
+heapq.heappush(heap, MyString("abc"))
+```

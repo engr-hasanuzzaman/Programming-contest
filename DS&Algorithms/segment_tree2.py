@@ -55,3 +55,9 @@ assert st.range_quiry(1, 6) == 10
 assert st.range_quiry(1, 1) == 3 
 assert st.range_quiry(0, 2) == 5 
 assert st.range_quiry(0, 8) == 20 
+
+"""
+- all the operation will be perform on the original array index
+- all the comparison will be based on original & passing range value
+- if our range on the right part of the array and mid be less than ql that means qr will be < ql
+"""

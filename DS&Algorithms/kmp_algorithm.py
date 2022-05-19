@@ -1,6 +1,6 @@
 # longest prefix which is suffiex also
 # pi[i] contains length of the max sub-string with end at i and which is prefix also
-# so pi[i] will contatin the next char with is not part of the prefix yet
+# so pi[i] (i'th idx) will contatin the next char which is not part of the prefix yet
 # [use lps for pattern matching](https://files.codingninjas.in/article_images/prefix-function-knuth-morris-pratt-algorithm-1-1635309294.jpg)
 def lps(str):
     pi = [0] * len(str)

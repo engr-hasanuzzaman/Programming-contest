@@ -10,6 +10,9 @@ class AvlTree:
     def __init__(self) -> None:
         self.root = None
 
+    def insert(self, key):
+        self.root = self._insert(self.root, key)
+
     def _insert(self, root, key):
         if not root:
             return Node(key)
@@ -24,16 +27,16 @@ class AvlTree:
 
         # rotate if in-balance
         # LL
-        if balance > 1 and key < root.left:
-            self._rotate_right(root)
-        elif balance > 1 and key > root.left:
+        if balance > 1 and key < root.left.data:
+            return self._rotate_right(root)
+        elif balance > 1 and key > root.left.data:
             root.left = self._rotate_left(root.left)
-            self._rotate_right(root)
-        elif balance < -1 and key > root.right:
-            self._rotate_left(root)
-        elif balance < -1 and key < root.right:
+            return self._rotate_right(root)
+        elif balance < -1 and key > root.right.data:
+            return self._rotate_left(root)
+        elif balance < -1 and key < root.right.data:
             root.right = self._rotate_right(root.right)
-            self._rotate_left(root)
+            return self._rotate_left(root)
 
         return root
 
@@ -71,3 +74,43 @@ class AvlTree:
         new_root.height = self._calculate_height(new_root)
 
         return new_root
+
+# check 
+class TestAvl:
+    def __init__(self) -> None:
+        self.check_left_left_rotate(AvlTree())
+        self.check_right_right_rotate(AvlTree())
+        self.check_right_left_rotate(AvlTree())
+        self.check_left_right_rotate(AvlTree())
+
+    def check_left_left_rotate(self, a):
+        a.insert(3)
+        a.insert(2)
+        a.insert(1)
+
+        assert a.root.data == 2
+
+    def check_right_right_rotate(self, a):
+        a.insert(1)
+        a.insert(2)
+        a.insert(3)
+
+        assert a.root.data == 2
+
+    def check_left_right_rotate(self, a):
+        a.insert(7)
+        a.insert(4)
+        a.insert(6)
+
+        assert a.root.data == 6
+
+    def check_right_left_rotate(self, a):
+        a.insert(3)
+        a.insert(8)
+        a.insert(6)
+
+        assert a.root.data == 6
+
+
+if __name__ == '__main__':
+    TestAvl()

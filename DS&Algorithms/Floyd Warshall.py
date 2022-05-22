@@ -4,6 +4,9 @@
 # update dp
 # for i & j, if dp[i][k] + dp[k][j] < dp[i][j] update dp[i][j] & next[i][j] = next[i][k]
 # dp[i][j] = 
+
+# the theme of the algorithm is, 
+# if we use every node as the intermediatory nodes between two nodes, does it give us min val?
 class Solution:
     def shortest_distance(self, dp):
         size = len(dp)

@@ -1,3 +1,16 @@
+'''
+Algorithm:
+- Mark the id of each node un-visit
+- Start DFS, upon visitin a node assign id, low_link_value = id, mark in stack, keep in stack
+and mark visited
+- explore neiboring nodes, after exploring each node, check if the neighboring node in stack
+(in stack means, we have cycle that's way we cameback to the currently visiting node)
+and update lowlink value of current/parent node (maintain lowlink array)
+- after visiting each nodes, check if the current node's low link value is same as id (initial value)
+that means this is the starting point of the SSC. Pop all the nodes till current node from statck and
+mark those node are not in stack
+- all the nodes with same low-link value form a SSC
+'''
 from collections import defaultdict
 
 

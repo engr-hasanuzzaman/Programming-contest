@@ -35,7 +35,9 @@ def printArray(arr, dArr):
     return arr
 
 A = [ 10, 5, 20, 40 ] 
+print("input", A)
 dArr = diffArray(A)
+print(dArr)
 update(dArr, 0, 1, 10)
 print(printArray(A, dArr))
 update(dArr, 1, 3, 20) 

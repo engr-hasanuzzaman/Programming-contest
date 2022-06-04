@@ -11,6 +11,8 @@ def n_queen_problem(n, row = 0, ans = [0], cols = {}, diagonal1 = {}, diagonal2 
       # /
       diagonal2[col + row] = true # forward slash diagonal
       # diff btw clm and row is same
+      # abs(col - row) will not work because 0- 1 and 1 - 0 will be same
+      # for 4 * 4 we have 6 diagonals
       diagonal1[col - row + n - 1] = true # back slash diagonal
 
       n_queen_problem(n, row + 1, ans, cols, diagonal1, diagonal2)

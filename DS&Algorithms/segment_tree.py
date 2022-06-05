@@ -1,9 +1,10 @@
+# input elements will be the leaf of segment tree
 # Main concent: divide array into two sub-array, keep lower part as left child, higher part as right child
 # arr -> input array from where we will construct the segment tree
-# segmentArr -> where we will kepp tree as root of i -> (i-1)/2, child of i: 2*i + 1, 2*i+2
+# segmentArr -> where we will keep tree as root of i -> (i-1)/2, child of i: 2*i + 1, 2*i+2
 # low -> current lower index. Initial val 0
 # high -> current higher index, Initial value: arr size - 1
-# pos -> postion in segment tree. Initial val 0 as we keep root on 0
+# root's pos -> postion in segment tree. Initial val 0 as we keep root on 0
 def constructSegmentTree(arr, segmentArr, low, high, pos):
     if low == high:
         segmentArr[pos] = arr[low]
@@ -21,8 +22,10 @@ def nearestLargePowerOf2(N):
         if N & (N - 1) == 0:
             return N
         
+        # N & N-1 remove the lower part of the number
+        # N & -N return the lowere part of N
         while N & (N-1) != 0:
-            N = N - (N & -N)
+            N = N - (N & -N) # N = N & (N-1) is same
         
         return 2*N
 
@@ -30,6 +33,7 @@ def nearestLargePowerOf2(N):
 # n is power of 2 then size of the segment tree will be 2*n - 1 
 # otherwise next powere of 2 of n (M) 2*M - 1 size of the segment tree will be 
 # ex, for 5,6,7 segmentTree array size will be 8*2 - 1
+# 16 / 5 which is around 4 thats whay space complexity is O(4N) for segment tree
 arr = [-1,3,4,0,2,1]
 # arr = [-1, 0, 3, 6]
 segmentTree = [float('inf')] * (2 * nearestLargePowerOf2(len(arr)) - 1)

@@ -1,3 +1,4 @@
+# s = string, t = text in which we will find text
 def rabin_karp(s, t):
     p = 31
     m = 1000
@@ -9,7 +10,8 @@ def rabin_karp(s, t):
     for i in range(1, len(p_pow)):
         p_pow[i] = (p_pow[i-1] * p) % m
 
-    h = [0] * (T + 1) 
+    # h is hash
+    h = [0] * (T + 1)
     for i in range(T):
         h[i+1] = (h[i] + (ord(t[i]) - ord('a') + 1) * p_pow[i]) % m
     

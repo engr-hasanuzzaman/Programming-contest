@@ -3,7 +3,7 @@ def maxSubArraySum(a,size):
     max_sum = -100000000
     sum = 0
     for n in a:
-        sum = max([n, n+sum])
+        sum = max(n, n+sum)
         if sum > max_sum:
             max_sum = sum
     return max_sum

@@ -1,6 +1,12 @@
 import math
 
 
+
+# sparse table st[i][j]  will store the answer for the range  of length [i, i + 2^j-1]
+# we can divide [i, i + 2^j-1] into tow -> [i, i + 2^(j-1)-1] & [i + 2^(j-1), i + 2^j-1]
+# where 2 ^(j-1) is the length
+# ex. j = 3 -> 2 ^ j -> 8 can be divided into two size of 
+# j-1 => 4 elements
 class Solution:
     def __init__(self, arr) -> None:
         self.elements = arr
@@ -48,6 +54,7 @@ class Solution:
 
     def query(self, L, R):
         # j is largets powere of 2 which is less than or = to n
+        # size is R - L + 1
         j = int(math.log2(R - L + 1))
         # print("---- the value of j is ", j)
         # Compute minimum of last 2^j elements

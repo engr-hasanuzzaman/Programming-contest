@@ -28,7 +28,7 @@ class Solution:
 
 # keep info 
 # idxmap -> value to index mapping to find index with value
-# rank wil hold both parten and rank info
+# rank will hold both parten and rank info
 # if rank[i] is negetive, that means it is root itself with rankg abs(rank[i])
 # _rank() will return rank of given data
 # N.B: for numeric value where index indicate node itself, do not need idxmap

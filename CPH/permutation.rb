@@ -17,4 +17,6 @@ def permutation(arr, visited = {}, cur_per = [], ans = [])
   ans
 end
 
+# check Python implementation which seems easier
+
 puts "-----permutation of 1,2,3 is #{permutation([1, 2, 3])}"

@@ -1,0 +1,70 @@
+# https://leetcode.com/problems/word-search/
+
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        visited = {}
+        rowSize = len(board)
+        colSize = len(board[0])
+
+        # pre checking that all the char are existing on board with same number
+        frequency = {}
+        for char in word:
+            if frequency.get(char):
+                frequency[char] += 1
+            else:
+                frequency[char] = 1
+        
+        for row in range(rowSize):
+            for col in range(colSize):
+                char = board[row][col]
+                if frequency.get(char):
+                    frequency[char] -= 1
+        for char in frequency:
+            if frequency[char] > 0:
+                return False
+            
+        for row in range(rowSize):
+            for col in range(colSize):
+                if board[row][col] == word[0]:
+                    visited[self.buildKey(row, col)] = True
+                    found =  self.isExist(board, [row, col], visited, word[:1], word)
+                    visited[self.buildKey(row, col)] = False
+                    if found:
+                        return found
+        return False
+
+    def isExist(self, board, curPos, visited, curWord, word):
+        if curWord == word:
+            return True
+        elif word[:len(curWord)] != curWord:
+            return False
+        
+        neighbour = [[0, -1], [-1, 0], [0, 1], [1, 0]]
+        for row, col in neighbour:
+            newRow = curPos[0] + row
+            newCol = curPos[1] + col
+            # checking 
+            if newRow < 0 or newRow >= len(board) or newCol < 0 or newCol >= len(board[0]):
+                continue
+            
+            # check whether already we have visited this position or nor
+            key = self.buildKey(newRow, newCol)
+            if visited.get(key):
+                continue
+            visited[self.buildKey(newRow, newCol)] = True
+            word_found = self.isExist(board, [newRow, newCol], visited, curWord + board[newRow][newCol], word)
+            if word_found:
+                return True
+            
+            visited[key] = False
+        return False
+            
+    def buildKey(self, row, col):
+        return f"{row}_{col}"
+            
+            
+            
+            
+
+
+     

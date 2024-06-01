@@ -1,3 +1,8 @@
+'''
+Dijskstra's algorithm is single source softest path alogorithm which find sortest path to 
+all the nodes/vertexs fron the source vertex
+'''
+
 from heapq import *
 class Solution:
 

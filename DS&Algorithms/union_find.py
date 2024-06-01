@@ -52,7 +52,7 @@ class DisJoinSet:
         while self.__rank(val) >= 0:
             val = self.elms[self.__rank(val)]
         
-        # path compressiong
+        # path compressiong (create direct connection with parent instead of going through others)
         self.rank[self.idxmap[x]] = self.idxmap[val]
         return val
 

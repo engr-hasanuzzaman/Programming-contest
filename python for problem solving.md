@@ -1,3 +1,5 @@
+[Youtube link for quick review](https://www.youtube.com/watch?v=0K_eZGS5NsU)
+
 # list of document list
 - [20+ helpful Python syntax patterns for coding interviews](https://towardsdatascience.com/19-helpful-python-syntax-patterns-for-coding-interviews-3704c15b758f)
 - https://medium.com/@ratulsaha/preparing-for-programming-interview-as-a-phd-student-with-python-5f8af8b40d5f

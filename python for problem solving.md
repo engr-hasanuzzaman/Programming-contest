@@ -134,3 +134,18 @@ In ruby
 ```ruby
 a.combinations(3)
 ```
+
+### use math 
+```
+import math
+math.floor(2.9) -> 2
+math.ceil(1.6) -> 2
+math.sqrt(2)
+math.pow(2,3)
+```
+
+float("inf")
+float("-inf")
+
+array.append()
+array.pop()

@@ -1,3 +1,8 @@
+'''
+Single source sortest path algorithm which work with negetive weight also (Dijkstra algorithm work only with positive weight)
+'''
+
+
 class Solution:
     # Function to construct and return cost of MST for a graph
     # represented using adjacency matrix representation

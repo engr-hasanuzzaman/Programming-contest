@@ -1,5 +1,9 @@
 '''
 Single source sortest path algorithm which work with negetive weight also (Dijkstra algorithm work only with positive weight)
+It follows Dynamic Programming where we try out all the possible solutions and pick the best one.
+
+If number of Vertix is N, do relaxsation N-1 time
+Relaxasion: update the cost of U -> V if d[V] > d[U] + cost(U,V)
 '''
 
 

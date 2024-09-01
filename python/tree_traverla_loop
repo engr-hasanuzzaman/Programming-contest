@@ -1,0 +1,120 @@
+# post order traverla using while loop
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def post_order_traversal(root):
+    if not root:
+        return []
+
+    stack = []
+    result = []
+    last_visited = None
+    current = root
+
+    while stack or current:
+        if current:
+            stack.append(current)
+            current = current.left
+        else:
+            peek_node = stack[-1]
+            # If right child exists and traversing node from left child, then move to right child
+            if peek_node.right and last_visited != peek_node.right:
+                current = peek_node.right
+            else:
+                # Visit the node
+                result.append(peek_node.val)
+                last_visited = stack.pop()
+
+    return result
+
+# Example usage:
+# Creating a binary tree:
+#        1
+#       / \
+#      2   3
+#     / \
+#    4   5
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+
+# Post-order traversal should return [4, 5, 2, 3, 1]
+print(post_order_traversal(root))
+
+def pre_order_traversal(root):
+    if not root:
+        return []
+
+    stack = [root]
+    result = []
+
+    while stack:
+        node = stack.pop()
+        if node:
+            result.append(node.val)
+            # Push right first so that left is processed first
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+
+    return result
+
+# Example usage:
+# Creating a binary tree:
+#        1
+#       / \
+#      2   3
+#     / \
+#    4   5
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+
+# Pre-order traversal should return [1, 2, 4, 5, 3]
+print(pre_order_traversal(root))
+
+
+def in_order_traversal(root):
+    if not root:
+        return []
+
+    stack = []
+    result = []
+    current = root
+
+    while stack or current:
+        if current:
+            stack.append(current)
+            current = current.left
+        else:
+            current = stack.pop()
+            result.append(current.val)
+            current = current.right
+
+    return result
+
+# Example usage:
+# Creating a binary tree:
+#        1
+#       / \
+#      2   3
+#     / \
+#    4   5
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+
+# In-order traversal should return [4, 2, 5, 1, 3]
+print(in_order_traversal(root))
+
